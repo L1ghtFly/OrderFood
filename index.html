@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Развилка в HTML</title>
+    <script> </script>
+</head>
+<body>
+    <h1>Выберите опцию</h1>
+    <select id="choice" onchange="showContent()">
+        <option value="none">-- Выберите --</option>
+        <option value="optionA">Опция А</option>
+        <option value="optionB">Опция Б</option>
+    </select>
+
+    <div id="contentA" style="display: none;">
+        <h2>Содержимое для Опции А</h2>
+        <p>Это текст, отображаемый при выборе Опции А.</p>
+    </div>
+
+    <div id="contentB" style="display: none;">
+        <h2>Содержимое для Опции Б</h2>
+        <p>Это текст, отображаемый при выборе Опции Б.</p>
+    </div>
+</body>
+</html>
