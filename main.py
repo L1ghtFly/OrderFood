@@ -15,7 +15,7 @@ dp = Dispatcher()
 @dp.message(Command('start'))
 async def send_welcome(message: types.Message):
     # Создание кнопки с объектом WebAppInfo
-    web_app_info = WebAppInfo(url='https://l1ghtfly.github.io/orderfood')  # Замените на фактический URL
+    web_app_info = WebAppInfo(url='https://l1ghtfly.github.io/OrderFood/')  # Замените на фактический URL
     button = types.KeyboardButton(text='Заказать еду', web_app=web_app_info)
     
     # Инициализация клавиатуры с кнопкой
