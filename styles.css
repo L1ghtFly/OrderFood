@@ -124,7 +124,7 @@
     margin-bottom: 8px;
   }
   .registration-form label {
-    color: var(--tg-theme-hint-color);
+    color: var(--tg-theme-text-color);
   }
   
   .form-group {
@@ -159,9 +159,13 @@
     color: var(--tg-theme-accent-text-color);
     font-size: 12px;
     margin-left: 5px;
-    padding-right: 3px;
-    padding-left: 3px;
+    padding: 0 3px; /* Убираем верхний и нижний padding */
+    display: inline; /* Добавляем это свойство */
+    width: auto; /* Контролируем ширину */
+    height: auto; /* Контролируем высоту */
+    line-height: normal; /* Для нормального отображения текста */
   }
+  
   
    .label-top {
     transform: translateY(-95%) scale(1);
