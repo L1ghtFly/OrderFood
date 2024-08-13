@@ -95,6 +95,9 @@
     padding: 10px;
     text-align: center;
   }
+  .registration-form h1 {
+    color: var(--tg-theme-text-color);
+  }
   
   .registration-form input[type="text"],
   .registration-form input[type="email"],
@@ -154,9 +157,9 @@
   
   
   .form-group input:focus + label {
-    transform: translateY(-62%) scale(1);
+    transform: translateY(-70%) scale(1);
     background-color: var(--tg-theme-bg-color);
-    color: var(--tg-theme-accent-text-color);
+    color: var(--tg-theme-text-color);
     font-size: 12px;
     margin-left: 5px;
     padding: 0 3px; /* Убираем верхний и нижний padding */
