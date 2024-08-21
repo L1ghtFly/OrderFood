@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="menu.css">
+    <script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script defer src="mains.js"></script>
+    <title>Заказ еды</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>BigLunch.</h1>
+    </nav>
+    <hr class="divider">
+    <section class="content">
+        <div class="menu">
+            <h1>Меню</h1>
+        </div>
+        <!-- Использование классов вместо ID для toggleDropdown и уникальных ID для каждого счетчика -->
+        <div class="dropdown">
+            <button class="dropbtn" id="saladButton" onclick="toggleDropdown('saladDropdown', event)">
+                1. Салаты
+                <i id="saladDropdownIcon" class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-content main-dropdown-content" id="saladDropdown">
+                <div class="item">
+                    Салат с фасолью, сухариками и ветчиной / 3,00 - <button onclick="decreaseCount('saladCount1')">-</button> <span id="saladCount1">0</span> <button onclick="increaseCount('saladCount1')">+</button>
+                </div>
+                <div class="item">
+                    Салат а-ля “Цезарь” / 3,20 <button onclick="decreaseCount('saladCount2')">-</button> <span id="saladCount2">0</span> <button onclick="increaseCount('saladCount2')">+</button>
+                </div>
+                <div class="item">
+                    Салат “Цветик-семицветик” / 3,00 <button onclick="decreaseCount('saladCount3')">-</button> <span id="saladCount3">0</span> <button onclick="increaseCount('saladCount3')">+</button>
+                </div>
+                <div class="item">
+                    Салат из белокачанной капусты с помидорами и морковью  / 2,60 <button onclick="decreaseCount('saladCount4')">-</button> <span id="saladCount4">0</span> <button onclick="increaseCount('saladCount4')">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown('soupDropdown', event)">
+                2. Первое блюдо
+                <i id="soupDropdownIcon" class="fas fa-chevron-down"></i>
+            </button>
+            <div id="soupDropdown" class="dropdown-content">
+                <div class="item">
+                    Солянка сборная / 5,60 - <button onclick="decreaseCount('soupCount1')">-</button> <span id="soupCount1">0</span> <button onclick="increaseCount('soupCount1')">+</button>
+                </div>
+                <div class="item">
+                    Cуп рыбный из форели / 5,20 - <button onclick="decreaseCount('soupCount2')">-</button> <span id="soupCount2">0</span> <button onclick="increaseCount('soupCount2')">+</button>
+                </div>
+                <div class="item">
+                    Рассольник Ленинградский / 3,30 - <button onclick="decreaseCount('soupCount3')">-</button> <span id="soupCount3">0</span> <button onclick="increaseCount('soupCount3')">+</button>
+                </div>
+                <!-- Дополнительные подпункты с уникальными ID -->
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown('mainDropdown', event)">
+                3. Основное блюдо
+                <i id="mainDropdownIcon" class="fas fa-chevron-down"></i>
+            </button>
+            <div id="mainDropdown" class="dropdown-content">
+                <!-- Вложенное меню для различных типов основных блюд -->
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown('porkDropdown', event)">Свинина
+                        <i id="porkDropdownIcon" class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="dropdown-content" id="porkDropdown">
+                        <div class="item">
+                            Свиные ребрышки / 5,00 - 
+                            <button onclick="decreaseCount('porkCount1', event)">-</button> 
+                            <span id="porkCount1">0</span> 
+                            <button onclick="increaseCount('porkCount1', event)">+</button>
+                        </div>
+                        <!-- Дополнительные подпункты для свинины -->
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown('beefDropdown', event)">Говядина
+                        <i id="beefDropdownIcon" class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="dropdown-content" id="beefDropdown">
+                        <div class="item">
+                            Говяжий стейк / 7,00 - 
+                            <button onclick="decreaseCount('beefCount1')">-</button> 
+                            <span id="beefCount1">0</span> 
+                            <button onclick="increaseCount('beefCount1')">+</button>
+                        </div>
+                        <!-- Дополнительные подпункты для говядины -->
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown('chickenDropdown', event)">Курица
+                        <i id="chickenDropdownIcon" class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="dropdown-content" id="chickenDropdown">
+                        <div class="item">
+                            Куриные крылышки / 4,00 -
+                            <button onclick="decreaseCount('chickenCount1')">-</button> 
+                            <span id="chickenCount1">0</span> 
+                            <button onclick="increaseCount('chickenCount1')">+</button>
+                        </div>
+                                              
+                        <!-- Дополнительные подпункты для курицы -->
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown('fishDropdown', event)">Рыба
+                        <i id="fishDropdownIcon" class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="dropdown-content" id="fishDropdown">
+                        <div class="item">
+                            Рыба запеченая с лимоном / 15,50 -
+                            <button onclick="decreaseCount('fishCount1')">-</button> 
+                            <span id="fishCount1">0</span> 
+                            <button onclick="increaseCount('fishCount1')">+</button>
+                        </div>
+                                              
+                        <!-- Дополнительные подпункты для курицы -->
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" id="vegeButton" onclick="toggleDropdown('vegeDropdown', event)">
+                4. Без мяса
+                <i id="vegeDropdownIcon" class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-content main-dropdown-content" id="vegeDropdown">
+                <div class="item">
+                    Оладьи кабачково-картофельные с грибами / 8,20 - <button onclick="decreaseCount('vegeCount1')">-</button> <span id="vegeCount1">0</span> <button onclick="increaseCount('vegeCount1')">+</button>
+                </div>
+                <div class="item">
+                    Сырники творожные / 3,00 - <button onclick="decreaseCount('vegeCount2')">-</button> <span id="vegeCount2">0</span> <button onclick="increaseCount('vegeCount2')">+</button>
+                </div>
+                <div class="item">
+                    Сырники творожные с персиком / 2,60 - <button onclick="decreaseCount('vegeCount4')">-</button> <span id="vegeCount4">0</span> <button onclick="increaseCount('vegeCount4')">+</button>
+                </div>
+                <div class="item">
+                    Блинчики с  яблоками / 4,60 - <button onclick="decreaseCount('vegeCount3')">-</button> <span id="vegeCount3">0</span> <button onclick="increaseCount('vegeCount3')">+</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="dropdown.js"></script>
+</body>
+</html>

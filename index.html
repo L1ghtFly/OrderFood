@@ -26,8 +26,8 @@
                 <label for="name">Имя</label>
             </div>
             <div class="form-group">
-                <input class="write" type="email" id="email" required>
-                <label for="email">Электронная почта</label>
+                <input class="write" type="tel" id="email" required>
+                <label for="email">Номер телефона</label>
             </div>
             <div class="form-group">
                 <input class="write" type="password" id="password" required>
@@ -51,6 +51,15 @@
     let order = document.getElementById ("order");
     buy. addEventListener ("click", () => { 
         document. getElementById ("main")
+    });
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // предотвратить стандартную отправку формы
+        // Проверка данных формы (вы можете добавить свои проверки)
+        if (document.getElementById("email").value && document.getElementById("password").value && document.getElementById("name").value) {
+            window.location.href = "menu.html"; // перенаправление на menu.html
+        } else {
+            alert("Пожалуйста, заполните все поля!");
+        }
     });
 </script>
 </body>

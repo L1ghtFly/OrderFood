@@ -1,0 +1,122 @@
+/* Стилизация кнопок выпадающего меню */
+.dropbtn {
+    background-color: var(--tg-theme-button-color); /* Используем переменную или fallback цвет */
+    color: var(--tg-theme-button-text-color);
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Контейнер для выпадающего меню */
+.dropdown {
+    position: relative;
+    margin-top: 15px;
+}
+.dropdown-content {
+    display: none;
+}
+
+/* Скрытые элементы меню */
+.dropdown-content {
+    display: none;
+    position: relative; /* Исправлено на absolute для корректного позиционирования */
+    background-color: var(--tg-theme-bg-color);
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Стили для элементов меню */
+.dropdown-content .item {
+    color: var(--tg-theme-text-color);
+    padding: 4px 12px;
+    display: block;
+}
+
+/* Изменение фона элемента меню при наведении */
+.dropdown-content .item:hover {
+    background-color: var(--tg-theme-secondary-bg-color);
+}
+
+/* Изменить фон кнопки при наведении */
+.dropdown:hover .dropbtn {
+    background-color: var(--tg-theme-accent-text-color);
+}
+
+.menu {
+    color: var(--tg-theme-link-color);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+}
+#saladDropdown button,
+#soupDropdown button,
+#porkDropdown button,
+#beefDropdown button,
+#chickenDropdown button, 
+#fishDropdown button,
+#vegeDropdown button{
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    color: black;
+    background-color: rgb(181, 183, 186);
+    width: 20px;
+    height: 20px;
+}
+#saladDropdown button:hover,
+#soupDropdown button:hover {
+    background-color: var(--tg-theme-accent-text-color);
+    transform: scale(1.1);
+}
+
+.btn-count {
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 20px;
+    height: 20px;
+}
+
+.btn-count i {
+    font-size: 16px;
+}
+
+.btn-count:hover {
+    background-color: var(--tg-theme-accent-text-color);
+    transform: scale(1.1);
+}
+
+.item span {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
+    height: 30px;
+    line-height: 30px;
+}
+.dropbtn .icon {
+    display: inline-block;
+    transition: transform 0.3s; /* Плавная анимация вращения */
+}
+
+.rotate-icon {
+    transform: rotate(180deg); /* Поворот иконки на 180 градусов */
+}
+
+/* #saladbuttom{
+    color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color)
+} */
