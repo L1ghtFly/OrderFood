@@ -119,8 +119,8 @@
 #confirm {
     padding: 10px 20px;
     font-size: 16px;
+    background-color: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
-    background-color: var(--tg-theme-button-color); /* Зеленый цвет фона */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -133,7 +133,7 @@
 }
 
 #confirm:active {
-    background-color: var(--tg-theme-button-color); /* Еще более темный зеленый цвет при нажатии */
+    background-color: var(--tg-theme-accent-text-color); /* Еще более темный зеленый цвет при нажатии */
     transform: scale(0.95); /* Сжатие при нажатии */
 }
 
@@ -157,7 +157,9 @@
 #deliveryOptions label {
     color: var(--tg-theme-hint-color);
 }
-
+input[type="radio"] {
+    accent-color: var(--tg-theme-accent-text-color);
+}
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);
     background-color: var(--tg-theme-button-color)
