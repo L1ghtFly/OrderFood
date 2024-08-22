@@ -1,4 +1,14 @@
 /* Стилизация кнопок выпадающего меню */
+body {
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+}
+.navbar{
+    background-color: var(--tg-theme-header-bg-color);
+}
+.navbar h1{
+    color: var(--tg-theme-text-color);
+}
 .dropbtn {
     background-color: var(--tg-theme-button-color); /* Используем переменную или fallback цвет */
     color: var(--tg-theme-button-text-color);
