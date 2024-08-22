@@ -61,7 +61,8 @@
 #beefDropdown button,
 #chickenDropdown button, 
 #fishDropdown button,
-#vegeDropdown button{
+#vegeDropdown button,
+#sidisDropdown button{
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -114,6 +115,30 @@
 
 .rotate-icon {
     transform: rotate(180deg); /* Поворот иконки на 180 градусов */
+}
+#confirm {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--tg-theme-button-color);
+    background-color: var(--tg-theme-button-text-color); /* Зеленый цвет фона */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#confirm:hover {
+    background-color: var(--tg-theme-button-color); /* Темно-зеленый цвет при наведении */
+    transform: scale(1.05); /* Небольшое увеличение размера */
+}
+
+#confirm:active {
+    background-color: var(--tg-theme-button-color); /* Еще более темный зеленый цвет при нажатии */
+    transform: scale(0.95); /* Сжатие при нажатии */
+}
+
+#confirm:focus {
+    outline: none; /* Убираем контур при фокусе для эстетичности */
 }
 
 /* #saladbuttom{

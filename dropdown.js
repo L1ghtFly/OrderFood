@@ -77,4 +77,81 @@ document.addEventListener('click', function(event) {
 });
 
 
+
+function increaseCount(itemId) {
+    var countElement = document.getElementById(itemId);
+    var currentCount = parseInt(countElement.textContent);
+    countElement.textContent = currentCount + 1;
+
+    // Получаем название и цену блюда
+    var itemElement = countElement.closest('.item');
+    var itemName = itemElement.textContent.split('/')[0].trim(); // Название блюда
+    var itemPrice = parseFloat(itemElement.textContent.split('/')[1].split('-')[0].trim()); // Цена блюда
+
+    // Добавляем или обновляем элемент в заказе
+    var orderList = document.getElementById('orderList');
+    var listItem = document.getElementById(itemId + '_order');
+
+    if (listItem) {
+        listItem.textContent = itemName + ' x ' + (currentCount + 1) + ' = ' + ((currentCount + 1) * itemPrice).toFixed(2) + ' руб.';
+    } else {
+        listItem = document.createElement('li');
+        listItem.id = itemId + '_order';
+        listItem.textContent = itemName + ' x 1 = ' + itemPrice.toFixed(2) + ' руб.';
+        orderList.appendChild(listItem);
+    }
+
+    // Обновляем итоговую сумму
+    updateTotalPrice();
+}
+
+function decreaseCount(itemId) {
+    var countElement = document.getElementById(itemId);
+    var currentCount = parseInt(countElement.textContent);
+    if (currentCount > 0) {
+        countElement.textContent = currentCount - 1;
+        var itemElement = countElement.closest('.item');
+        var itemName = itemElement.textContent.split('/')[0].trim();
+        var itemPrice = parseFloat(itemElement.textContent.split('/')[1].split('-')[0].trim());
+        var listItem = document.getElementById(itemId + '_order');
+
+        if (currentCount - 1 === 0) {
+            listItem.parentNode.removeChild(listItem);
+        } else {
+            listItem.textContent = itemName + ' x ' + (currentCount - 1) + ' = ' + ((currentCount - 1) * itemPrice).toFixed(2) + ' руб.';
+        }
+
+        updateTotalPrice();
+    }
+}
+
+function updateTotalPrice() {
+    var totalPrice = 0;
+    var listItems = document.querySelectorAll('#orderList li');
+    listItems.forEach(function(item) {
+        var price = parseFloat(item.textContent.split('=')[1].split('руб')[0].trim());
+        totalPrice += price;
+    });
+    document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+}
+
+
+function submitOrder() {
+    var deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+    var orderItems = [];
+
+    document.querySelectorAll('#orderList li').forEach(function(item) {
+        orderItems.push(item.textContent);
+    });
+
+    var totalPrice = document.getElementById('totalPrice').textContent;
+
+    // Вывод подтверждения заказа
+    alert("Ваш заказ:\n" + orderItems.join('\n') + 
+          "\nИтого: " + totalPrice + " руб." +
+          "\nСпособ получения: " + (deliveryMethod === "local" ? "На месте" : "Доставка"));
+
+    // Здесь может быть код для отправки данных на сервер или обработка данных заказа
+}
+
 let tg = window.Telegram.WebApp;
