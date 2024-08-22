@@ -119,8 +119,8 @@
 #confirm {
     padding: 10px 20px;
     font-size: 16px;
-    color: var(--tg-theme-button-color);
-    background-color: var(--tg-theme-button-text-color); /* Зеленый цвет фона */
+    color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color); /* Зеленый цвет фона */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -139,6 +139,23 @@
 
 #confirm:focus {
     outline: none; /* Убираем контур при фокусе для эстетичности */
+}
+#orderSummary {
+    background-color: var(--tg-theme-section-bg-color);
+    border-color: var(--tg-theme-section-separator-color);
+}
+
+#orderSummary h2 {
+    background-color: var(--tg-theme-header-bg-color);
+    color: var(--tg-theme-section-header-text-color);
+}
+
+#orderList li {
+    color: var(--tg-theme-text-color);
+}
+
+#deliveryOptions label {
+    color: var(--tg-theme-hint-color);
 }
 
 /* #saladbuttom{
