@@ -153,5 +153,14 @@ function submitOrder() {
 
     // Здесь может быть код для отправки данных на сервер или обработка данных заказа
 }
-
+document.querySelectorAll('input[name="delivery"]').forEach(input => {
+    input.addEventListener('change', function() {
+        var additionalInfo = document.getElementById('additionalInfo');
+        if (this.value === 'delivery') {
+            additionalInfo.style.display = 'block'; // Показываем поля
+        } else {
+            additionalInfo.style.display = 'none'; // Скрываем поля
+        }
+    });
+});
 let tg = window.Telegram.WebApp;

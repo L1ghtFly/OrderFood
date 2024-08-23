@@ -20,9 +20,22 @@
     </nav>
     <hr class="divider">
     <section class="content">
+        <div id="deliveryOptions">
+            <input type="radio" id="localDelivery" name="delivery" value="local" checked>
+            <label for="localDelivery">На месте</label>
+            <input type="radio" id="homeDelivery" name="delivery" value="delivery">
+            <label for="homeDelivery">Доставка</label>
+        </div>
+        
+        <div id="additionalInfo" style="display: none;">
+            <label for="address">Адрес доставки:</label>
+            <input type="text" id="address" name="address" placeholder="Введите ваш адрес">
+            <label for="extraNotes">Дополнительная информация:</label>
+            <textarea id="extraNotes" name="extraNotes" placeholder="Например, код домофона, этаж, особые пожелания..."></textarea>
+        </div>
         <div class="menu">
             <h1>Меню</h1>
-        </div>
+        </div>     
         <!-- Использование классов вместо ID для toggleDropdown и уникальных ID для каждого счетчика -->
         <div class="dropdown">
             <button class="dropbtn" id="saladButton" onclick="toggleDropdown('saladDropdown', event)">
@@ -181,12 +194,6 @@
         <h2>Ваш заказ:</h2>
         <ul id="orderList"></ul>
         <p><strong>Итого: <span id="totalPrice">0</span> руб.</strong></p>
-    
-        <div id="deliveryOptions">
-            <label><input type="radio" name="delivery" value="local" checked>На месте</label>
-            <label><input type="radio" name="delivery" value="delivery"> Доставка</label>
-        </div>
-    
         <button id="confirm" onclick="submitOrder()">Подтвердить заказ</button>
     </section>
     

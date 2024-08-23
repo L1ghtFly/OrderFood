@@ -3,11 +3,17 @@ body {
     background-color: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
 }
-.navbar{
-    background-color: var(--tg-theme-header-bg-color);
-}
-.navbar h1{
-    color: var(--tg-theme-text-color);
+nav {
+    width: 100%;
+    background: var(--tg-theme-header-bg-color);
+    padding: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+nav h1 {
+    font-size: 24px;
+    font-weight: bold;
 }
 .dropbtn {
     background-color: var(--tg-theme-button-color); /* Используем переменную или fallback цвет */
@@ -170,6 +176,95 @@ body {
 input[type="radio"] {
     accent-color: var(--tg-theme-accent-text-color);
 }
+#deliveryOptions {
+    padding: 10px;
+    width: 13%;
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#deliveryOptions label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: var(--tg-theme-section-bg-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#deliveryOptions input[type="radio"] {
+    display: none;
+}
+
+#deliveryOptions input[type="radio"]:checked + label {
+    background-color: var(--tg-theme-accent-text-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+#deliveryOptions label:hover {
+    background-color: var(--tg-theme-link-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+
+#deliveryOptions {
+    padding: 10px;
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#deliveryOptions label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: var(--tg-theme-section-bg-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#deliveryOptions input[type="radio"] {
+    display: none;
+}
+
+#deliveryOptions input[type="radio"]:checked + label {
+    background-color: var(--tg-theme-accent-text-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+#deliveryOptions label:hover {
+    background-color: var(--tg-theme-link-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+#additionalInfo {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#additionalInfo input[type="text"],
+#additionalInfo textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--tg-theme-section-separator-color);
+}
+
+#additionalInfo textarea {
+    height: 100px;
+    resize: vertical;
+}
+
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);
     background-color: var(--tg-theme-button-color)
