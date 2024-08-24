@@ -1,4 +1,21 @@
 /* Стилизация кнопок выпадающего меню */
+@media (max-width: 600px) {
+    #menu {
+        font-size: 14px;
+    }
+    .dropdown {
+        width: 100%;
+    }
+    .dropbtn {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .dropdown-content {
+        width: 100%;
+    }
+}
+
 body {
     background-color: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
@@ -67,8 +84,8 @@ nav h1 {
 .item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 5px;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 #saladDropdown button,
 #soupDropdown button,
