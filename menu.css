@@ -5,7 +5,6 @@ body {
 }
 nav {
     width: 100%;
-    background: var(--tg-theme-header-bg-color);
     padding: -20px;
     display: flex;
     justify-content: center;
@@ -178,18 +177,18 @@ input[type="radio"] {
 }
 #deliveryOptions {
     padding: 10px;
-    width: 13%;
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color: #ffffff; /* Цвет фона */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #deliveryOptions label {
-    display: inline-block;
+    background-color: #f0f0f0; /* Серый фон для неактивных кнопок */
+    color: #000000; /* Черный цвет текста */
     padding: 10px 20px;
-    margin: 5px;
-    background-color: var(--tg-theme-section-bg-color);
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -200,69 +199,40 @@ input[type="radio"] {
 }
 
 #deliveryOptions input[type="radio"]:checked + label {
-    background-color: var(--tg-theme-accent-text-color);
-    color: var(--tg-theme-button-text-color);
+    background-color: #ffcc00; /* Желтый цвет для активной кнопки */
+    color: #ffffff;
 }
 
 #deliveryOptions label:hover {
-    background-color: var(--tg-theme-link-color);
-    color: var(--tg-theme-button-text-color);
-}
-
-
-#deliveryOptions {
-    padding: 10px;
-    background-color: var(--tg-theme-secondary-bg-color);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-#deliveryOptions label {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: var(--tg-theme-section-bg-color);
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#deliveryOptions input[type="radio"] {
-    display: none;
-}
-
-#deliveryOptions input[type="radio"]:checked + label {
-    background-color: var(--tg-theme-accent-text-color);
-    color: var(--tg-theme-button-text-color);
-}
-
-#deliveryOptions label:hover {
-    background-color: var(--tg-theme-link-color);
-    color: var(--tg-theme-button-text-color);
+    background-color: #dddddd;
 }
 
 #additionalInfo {
     margin-top: 20px;
     padding: 15px;
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#additionalInfo label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666666; /* Темно-серый цвет текста */
 }
 
 #additionalInfo input[type="text"],
 #additionalInfo textarea {
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
     border-radius: 4px;
-    border: 1px solid var(--tg-theme-section-separator-color);
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
 }
 
 #additionalInfo textarea {
-    height: 100px;
-    resize: vertical;
+    height: 80px;
+    resize: none; /* Запрет на изменение размера */
 }
 
 /* #saladbuttom{

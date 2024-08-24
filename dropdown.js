@@ -157,10 +157,36 @@ document.querySelectorAll('input[name="delivery"]').forEach(input => {
     input.addEventListener('change', function() {
         var additionalInfo = document.getElementById('additionalInfo');
         if (this.value === 'delivery') {
-            additionalInfo.style.display = 'block'; // Показываем поля
+            additionalInfo.style.display = 'block';
         } else {
-            additionalInfo.style.display = 'none'; // Скрываем поля
+            additionalInfo.style.display = 'none';
         }
     });
 });
+
+
+ymaps.ready(init);
+
+function init() {
+    var myMap = new ymaps.Map("map", {
+        center: [53.928842, 27.680948], // Новые координаты, смещенные правее
+        zoom: 12
+    });
+
+    // Создание круга с радиусом 3000 метров
+    var myCircle = new ymaps.Circle([
+        [53.928842, 27.680948], // Новый центр круга
+        3000 // Радиус в метрах
+    ], {}, {
+        fillColor: '#00FF00',   // Цвет заливки круга
+        fillOpacity: 0.3,       // Прозрачность заливки
+        strokeColor: '#0000FF', // Цвет обводки
+        strokeOpacity: 0.8,     // Прозрачность обводки
+        strokeWidth: 3          // Толщина обводки
+    });
+
+    myMap.geoObjects.add(myCircle);
+}
+
+
 let tg = window.Telegram.WebApp;
