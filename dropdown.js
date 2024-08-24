@@ -42,20 +42,33 @@ function decreaseCount(id) {
 function toggleDropdown(dropdownId, event) {
     event.stopPropagation(); // Предотвратить всплытие события к родительским элементам
 
-    // Получаем элемент, который был активирован
+    // Получаем активированный дропдаун и его иконку
     var dropdown = document.getElementById(dropdownId);
-    
-    // Получаем ID иконки на основе ID выпадающего списка
-    var iconId = dropdownId + 'Icon'; // Например: saladDropdown -> saladDropdownIcon
+    var iconId = dropdownId + 'Icon';
     var icon = document.getElementById(iconId);
 
-    // Переключаем видимость выбранного дропдауна и анимацию иконки
-    if (dropdown.style.display === 'block') {
-        dropdown.style.display = 'none';
-        icon.classList.remove('rotate-icon'); // Убираем анимацию при закрытии
-    } else {
+    var isNestedDropdown = dropdown.closest('.main-dropdown-content') !== null;
+    var isActive = dropdown.style.display === 'block';
+
+    // Закрытие всех невложенных дропдаунов, кроме текущего активного или его родителя
+    document.querySelectorAll('.dropdown-content').forEach(function(otherDropdown) {
+        let otherIconId = otherDropdown.id + 'Icon';
+        let otherIcon = document.getElementById(otherIconId);
+        if (!otherDropdown.contains(dropdown) && otherDropdown !== dropdown) {
+            otherDropdown.style.display = 'none';
+            if (otherIcon) {
+                otherIcon.classList.remove('rotate-icon');
+            }
+        }
+    });
+
+    // Переключаем видимость выбранного дропдауна
+    if (!isActive) {
         dropdown.style.display = 'block';
         icon.classList.add('rotate-icon'); // Добавляем анимацию при открытии
+    } else if (!isNestedDropdown) {
+        dropdown.style.display = 'none';
+        icon.classList.remove('rotate-icon');
     }
 }
 
@@ -168,14 +181,15 @@ document.querySelectorAll('input[name="delivery"]').forEach(input => {
 ymaps.ready(init);
 
 function init() {
+    // Инициализация карты с центром на улице Петра Мстиславца
     var myMap = new ymaps.Map("map", {
-        center: [53.928842, 27.680948], // Новые координаты, смещенные правее
-        zoom: 12
+        center: [53.928842, 27.680948], // Координаты для центра карты
+        zoom: 14
     });
 
     // Создание круга с радиусом 3000 метров
     var myCircle = new ymaps.Circle([
-        [53.928842, 27.680948], // Новый центр круга
+        [53.928842, 27.680948], // Центр круга
         3000 // Радиус в метрах
     ], {}, {
         fillColor: '#00FF00',   // Цвет заливки круга
@@ -185,8 +199,37 @@ function init() {
         strokeWidth: 3          // Толщина обводки
     });
 
+    // Добавление круга на карту
     myMap.geoObjects.add(myCircle);
+
+    // Создание и добавление метки на карту
+    var myPlacemark = new ymaps.Placemark([53.928842, 27.680948], {
+        hintContent: 'Парк Высоких Технологий',
+        balloonContent: 'улица Академика Купревича, 1к3'
+    });
+
+    // Добавление метки на карту
+    myMap.geoObjects.add(myPlacemark);
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var localDelivery = document.getElementById('localDelivery');
+    var addressInfo = document.querySelector('.addressInfo');
+
+    document.querySelectorAll('input[name="delivery"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            if (localDelivery.checked) {
+                addressInfo.style.display = 'block';
+            } else {
+                addressInfo.style.display = 'none';
+            }
+        });
+    });
+
+    // Установить начальное состояние
+    addressInfo.style.display = localDelivery.checked ? 'block' : 'none';
+});
 
 
 let tg = window.Telegram.WebApp;

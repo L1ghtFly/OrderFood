@@ -84,8 +84,8 @@ nav h1 {
 .item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
+    gap: 8px;
+    padding: 5px;
 }
 #saladDropdown button,
 #soupDropdown button,
@@ -192,13 +192,18 @@ nav h1 {
 input[type="radio"] {
     accent-color: var(--tg-theme-accent-text-color);
 }
+.delpick{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для блока */
+}
 #deliveryOptions {
     padding: 10px;
-    background-color: #ffffff; /* Цвет фона */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
+    background-color: #ffffff; /* Белый цвет фона */
+    border-radius: 10px; /* Округлые края для всего блока */
+    
+    display:grid;
+    grid-template-columns: 1fr 2fr;
     justify-content: space-between;
+    align-items: center; /* Центрирование содержимого по вертикали */
     width: 100%;
 }
 
@@ -206,9 +211,11 @@ input[type="radio"] {
     background-color: #f0f0f0; /* Серый фон для неактивных кнопок */
     color: #000000; /* Черный цвет текста */
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 10px; /* Округлые края для каждой кнопки */
     cursor: pointer;
     transition: background-color 0.3s ease;
+    flex: 1; /* Кнопки будут одинаковой ширины */
+    text-align: center; /* Текст по центру */
 }
 
 #deliveryOptions input[type="radio"] {
@@ -216,12 +223,12 @@ input[type="radio"] {
 }
 
 #deliveryOptions input[type="radio"]:checked + label {
-    background-color: #ffcc00; /* Желтый цвет для активной кнопки */
+    background-color: #FFD700; /* Золотой/жёлтый цвет для активной кнопки */
     color: #ffffff;
 }
 
 #deliveryOptions label:hover {
-    background-color: #dddddd;
+    background-color: #cccccc; /* Серый цвет при наведении */
 }
 
 #additionalInfo {
@@ -251,6 +258,43 @@ input[type="radio"] {
     height: 80px;
     resize: none; /* Запрет на изменение размера */
 }
+#deliveryOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #FFF;
+}
+
+#deliveryOptions label {
+    background-color: #f0f0f0;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#deliveryOptions input[type="radio"]:checked + label {
+    background-color: #FFD700; /* Желтый */
+    color: #FFF;
+}
+.hub{
+    display: block;
+}
+#pickupLocation p {
+    background: none;
+    border: none;
+    color: #000;
+    display: block;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+#pickupLocation span {
+    margin-right: 10px;
+}
+
 
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);

@@ -20,28 +20,34 @@
     </nav>
     <hr class="divider">
     <section class="content">
-        <div id="deliveryOptions">
-            <input type="radio" id="localDelivery" name="delivery" value="local" checked>
-            <label for="localDelivery">С собой</label>
-            <input type="radio" id="homeDelivery" name="delivery" value="delivery">
-            <label for="homeDelivery">Доставка</label>
+        <div class = "delpick">
+            <div id="deliveryOptions">
+                <input type="radio" id="localDelivery" name="delivery" value="local" checked>
+                <label for="localDelivery">С собой</label>
+                <input type="radio" id="homeDelivery" name="delivery" value="delivery">
+                <label for="homeDelivery">Доставка</label>
+            </div>
+            
+            <div class="addressInfo" style="display: none;"> <!-- Скроем этот блок по умолчанию -->
+                <div id="pickupLocation">
+                    <p>Парк Высоких Технологий</p>
+                    <p>улица Академика Купревича, 1к3</p>
+                </div>
+            </div>
+
         </div>
-
-       
-
+        
+        
+        
         <div id="additionalInfo" style="display: none;">
-            <div id="map" style="width: 100%; height: 500px;"></div>
             <label for="address">Улица, дом</label>
             <input type="text" id="address" name="address" placeholder="Введите ваш адрес">
-            <!-- <label for="extraNotes">Кв./Офис</label>
-            <input type="text" id="extraNotes" name="extraNotes" placeholder="Квартира или офис">
-            <label for="floor">Этаж</label>
-            <input type="text" id="floor" name="floor" placeholder="Этаж"> -->
             <label for="entry">Подъезд</label>
             <input type="text" id="entry" name="entry" placeholder="Подъезд">
             <label for="comments">Комментарий к адресу</label>
             <textarea id="comments" name="comments" placeholder="Комментарии..."></textarea>
         </div>
+        
         
         <div class="menu">
             <h1>Меню</h1>
