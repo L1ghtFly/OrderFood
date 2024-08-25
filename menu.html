@@ -28,24 +28,36 @@
                 <label for="homeDelivery">Доставка</label>
             </div>
             
-            <div class="addressInfo" style="display: none;"> <!-- Скроем этот блок по умолчанию -->
-                <div id="pickupLocation">
-                    <p>Парк Высоких Технологий</p>
-                    <p>улица Академика Купревича, 1к3</p>
+            <div class="addressInfo" style="display: none;">
+                <div id="pickupLocation" style="display: flex; align-items: center;">
+                    <div class="locationImage">
+                        <img src="metka.png" alt="Метка">
+                    </div>
+                    <div class="locationText">
+                        <p>Парк Высоких Технологий</p>
+                        <p id="street">улица Академика Купревича, 1к3</p>
+                    </div>
                 </div>
             </div>
+            
 
         </div>
         
         
         
         <div id="additionalInfo" style="display: none;">
-            <label for="address">Улица, дом</label>
-            <input type="text" id="address" name="address" placeholder="Введите ваш адрес">
-            <label for="entry">Подъезд</label>
-            <input type="text" id="entry" name="entry" placeholder="Подъезд">
+            <div class="grid-container">
+                <div>
+                    <label for="address">Улица, дом</label>
+                    <input type="text" id="address" name="address" placeholder="Введите ваш адрес">
+                </div>
+                <div>
+                    <label for="entry">Подъезд</label>
+                    <input type="text" id="entry" name="entry" placeholder="Подъезд">
+                </div>
+            </div>
             <label for="comments">Комментарий к адресу</label>
-            <textarea id="comments" name="comments" placeholder="Комментарии..."></textarea>
+            <input id="comments" name="comments" placeholder="Комментарии...">
         </div>
         
         

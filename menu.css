@@ -100,8 +100,6 @@ nav h1 {
     cursor: pointer;
     color: black;
     background-color: rgb(181, 183, 186);
-    width: 20px;
-    height: 20px;
 }
 #saladDropdown button:hover,
 #soupDropdown button:hover {
@@ -194,17 +192,8 @@ input[type="radio"] {
 }
 .delpick{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для блока */
-}
-#deliveryOptions {
-    padding: 10px;
-    background-color: #ffffff; /* Белый цвет фона */
-    border-radius: 10px; /* Округлые края для всего блока */
-    
-    display:grid;
-    grid-template-columns: 1fr 2fr;
-    justify-content: space-between;
-    align-items: center; /* Центрирование содержимого по вертикали */
     width: 100%;
+    border-radius: 10px; /* Округлые края для всего блока */
 }
 
 #deliveryOptions label {
@@ -232,6 +221,7 @@ input[type="radio"] {
 }
 
 #additionalInfo {
+    display: block;
     margin-top: 20px;
     padding: 15px;
     background-color: #ffffff;
@@ -239,41 +229,42 @@ input[type="radio"] {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#additionalInfo .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Разделение пространства на две колонки */
+    gap: 20px; /* Отступ между колонками */
+}
+
 #additionalInfo label {
     display: block;
     margin-bottom: 5px;
-    color: #666666; /* Темно-серый цвет текста */
+    color: #666; /* Темно-серый цвет текста */
 }
 
 #additionalInfo input[type="text"],
 #additionalInfo textarea {
-    width: 100%;
+    width: 100%; /* Исправлено с 99% на 100% для полного заполнения колонки */
     padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #848484c2; /* Серый фоновый цвет с непрозрачностью */
+    border: none;
     margin-bottom: 10px;
 }
 
 #additionalInfo textarea {
-    height: 80px;
+    height: 80px; /* Высота текстового поля */
     resize: none; /* Запрет на изменение размера */
 }
+
 #deliveryOptions {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
     background-color: #FFF;
+    margin: 5px;
 }
 
-#deliveryOptions label {
-    background-color: #f0f0f0;
-    color: #000;
-    padding: 10px 20px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+
 
 #deliveryOptions input[type="radio"]:checked + label {
     background-color: #FFD700; /* Желтый */
@@ -282,19 +273,60 @@ input[type="radio"] {
 .hub{
     display: block;
 }
-#pickupLocation p {
-    background: none;
-    border: none;
-    color: #000;
-    display: block;
-    justify-content: space-between;
+#pickupLocation {
+    display: flex;
+    align-items: center; /* Выравнивание элементов по центру по вертикали */
     cursor: pointer;
 }
 
-#pickupLocation span {
-    margin-right: 10px;
+.locationImage {
+    margin-right: 10px; /* Отступ справа для разделения изображения и текста */
 }
 
+.locationText {
+    display: flex;
+    flex-direction: column; /* Организация текстовых блоков в вертикальную колонку */
+}
+
+.addressInfo {
+    display: flex; /* Включаем flex для всего контейнера адреса */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.addressInfo p {
+    margin: 0; /* Убираем стандартные отступы у параграфов */
+}
+
+img {
+    width: auto; /* Фиксированная ширина для изображения */
+    height: 30px; /* Высота подстраивается автоматически */
+    padding-left: 5px;
+}
+#comments {
+    width: 100%; /* Занимает всю ширину контейнера */
+    height: 20px; /* Уменьшенная высота */
+    padding: 8px; /* Поле вокруг текста внутри textarea */
+    border: 1px solid #ccc; /* Легкая, тонкая граница */
+    border-radius: 4px; /* Скругленные углы */
+    resize: none; /* Запрет на изменение размера пользователем */
+    font-size: 14px; /* Размер шрифта текста */
+    line-height: 1.5; /* Межстрочный интервал */
+    color: #666; /* Цвет текста */
+    background-color: #fff; /* Фоновый цвет */
+    outline: none; /* Убираем контур при фокусе */
+}
+
+#comments:focus {
+    border-color: #66afe9; /* Изменение цвета границы при фокусе */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(102, 175, 233, 0.6); /* Усиленная тень при фокусе */
+}
+
+label {
+    display: block; /* Сделать метку блочным элементом */
+    margin-bottom: 5px; /* Отступ перед текстовым полем */
+    color: #333; /* Цвет текста метки */
+    font-size: 16px; /* Размер шрифта метки */
+}
 
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);
