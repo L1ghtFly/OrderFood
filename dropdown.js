@@ -90,23 +90,26 @@ document.addEventListener('click', function(event) {
 });
 
 
-
 function increaseCount(itemId) {
     var countElement = document.getElementById(itemId);
     var currentCount = parseInt(countElement.textContent);
-    countElement.textContent = currentCount + 1;
 
-    // Получаем название и цену блюда
+    if (currentCount >= 10) {
+        return;
+    }
+
+    currentCount += 1;
+    countElement.textContent = currentCount;
+
     var itemElement = countElement.closest('.item');
-    var itemName = itemElement.textContent.split('/')[0].trim(); // Название блюда
-    var itemPrice = parseFloat(itemElement.textContent.split('/')[1].split('-')[0].trim()); // Цена блюда
+    var itemName = itemElement.textContent.split('/')[0].trim();
+    var itemPrice = parseFloat(itemElement.textContent.split('/')[1].split('-')[0].trim());
 
-    // Добавляем или обновляем элемент в заказе
     var orderList = document.getElementById('orderList');
     var listItem = document.getElementById(itemId + '_order');
 
     if (listItem) {
-        listItem.textContent = itemName + ' x ' + (currentCount + 1) + ' = ' + ((currentCount + 1) * itemPrice).toFixed(2) + ' руб.';
+        listItem.textContent = itemName + ' x ' + currentCount + ' = ' + (currentCount * itemPrice).toFixed(2) + ' руб.';
     } else {
         listItem = document.createElement('li');
         listItem.id = itemId + '_order';
@@ -114,9 +117,47 @@ function increaseCount(itemId) {
         orderList.appendChild(listItem);
     }
 
+    // Обновляем количество контейнеров для салатов, если это салат
+    if (itemElement.dataset.category === 'salad') {
+        updateSaladContainers();
+    }
+
+    updateTotalPrice();
+}
+
+function updateSaladContainers() {
+    var saladElements = document.querySelectorAll('.item[data-category="salad"]');
+    var totalSalads = 0;
+    saladElements.forEach(function(element) {
+        var count = parseInt(element.querySelector('span').textContent);
+        totalSalads += count;
+    });
+
+    var containerElement = document.getElementById('contCount1');
+    containerElement.textContent = totalSalads; // Обновляем количество контейнеров
+
+    // Добавляем или обновляем контейнер в заказ
+    var orderList = document.getElementById('orderList');
+    var containerListItem = document.getElementById('contCount1_order');
+    var containerPrice = 0.40; // Цена за один контейнер
+
+    if (containerListItem) {
+        containerListItem.textContent = 'Контейнер для салата x ' + totalSalads + ' = ' + (totalSalads * containerPrice).toFixed(2) + ' руб.';
+    } else {
+        containerListItem = document.createElement('li');
+        containerListItem.id = 'contCount1_order';
+        containerListItem.textContent = 'Контейнер для салата x ' + totalSalads + ' = ' + (totalSalads * containerPrice).toFixed(2) + ' руб.';
+        orderList.appendChild(containerListItem);
+    }
     // Обновляем итоговую сумму
     updateTotalPrice();
 }
+
+
+
+    
+
+
 
 function decreaseCount(itemId) {
     var countElement = document.getElementById(itemId);
@@ -178,16 +219,33 @@ document.querySelectorAll('input[name="delivery"]').forEach(input => {
 });
 
 
-ymaps.ready(init);
+ymaps.ready(initMaps);
 
-function init() {
-    // Инициализация карты с центром на улице Петра Мстиславца
-    var myMap = new ymaps.Map("map", {
+function initMaps() {
+    initMapWithMarker();
+    initMapWithCircle();
+}
+
+function initMapWithMarker() {
+    var myMap = new ymaps.Map("mapWithMarker", {
         center: [53.928842, 27.680948], // Координаты для центра карты
         zoom: 14
     });
 
-    // Создание круга с радиусом 3000 метров
+    var myPlacemark = new ymaps.Placemark([53.928842, 27.680948], {
+        hintContent: 'Парк Высоких Технологий',
+        balloonContent: 'улица Академика Купревича, 1к3'
+    });
+
+    myMap.geoObjects.add(myPlacemark);
+}
+
+function initMapWithCircle() {
+    var myMap = new ymaps.Map("mapWithCircle", {
+        center: [53.928842, 27.680948], // Координаты для центра карты
+        zoom: 14
+    });
+
     var myCircle = new ymaps.Circle([
         [53.928842, 27.680948], // Центр круга
         3000 // Радиус в метрах
@@ -199,17 +257,7 @@ function init() {
         strokeWidth: 3          // Толщина обводки
     });
 
-    // Добавление круга на карту
     myMap.geoObjects.add(myCircle);
-
-    // Создание и добавление метки на карту
-    var myPlacemark = new ymaps.Placemark([53.928842, 27.680948], {
-        hintContent: 'Парк Высоких Технологий',
-        balloonContent: 'улица Академика Купревича, 1к3'
-    });
-
-    // Добавление метки на карту
-    myMap.geoObjects.add(myPlacemark);
 }
 
 

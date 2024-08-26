@@ -24,6 +24,7 @@ nav {
     width: 100%;
     padding: -20px;
     display: flex;
+    height: 30px;
     justify-content: center;
     align-items: center;
   }
@@ -328,6 +329,10 @@ label {
     font-size: 16px; /* Размер шрифта метки */
 }
 
+.selected {
+    background-color: #4CAF50; 
+    color: white;
+}
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);
     background-color: var(--tg-theme-button-color)
