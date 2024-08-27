@@ -75,11 +75,16 @@ function toggleDropdown(dropdownId, event) {
 // Добавляем обработчик клика вне выпадающего меню для его закрытия
 document.addEventListener('click', function(event) {
     // Находим все выпадающие списки
+    
+});
+// Обработчик для закрытия всех выпадающих меню, когда клик произошел вне их области
+document.addEventListener('click', function(event) {
     var dropdowns = document.querySelectorAll('.dropdown-content');
     dropdowns.forEach(function(dropdown) {
         var iconId = dropdown.id + 'Icon'; // Получаем ID иконки на основе ID выпадающего списка
         var icon = document.getElementById(iconId);
 
+        // Проверка условий закрытия: выпадающее меню открыто и клик произошел вне его области и вне области кнопки, которая его контролирует
         if (dropdown.style.display === 'block' && !dropdown.contains(event.target) && !dropdown.previousElementSibling.contains(event.target)) {
             dropdown.style.display = 'none';
             if (icon) {
@@ -87,7 +92,31 @@ document.addEventListener('click', function(event) {
             }
         }
     });
+
+    // Обработка нажатия на кнопки "Выбрать"
+    if (event.target.id === 'selectDeliveryButton') {
+        // Считывание и сохранение данных адреса доставки
+        var address = document.getElementById('address').value;
+        var entry = document.getElementById('entry').value;
+        var comments = document.getElementById('comments').value;
+
+        // Сохранение данных в localStorage или подготовка к отправке на сервер
+        localStorage.setItem('deliveryAddress', JSON.stringify({ address, entry, comments }));
+
+        // Закрываем форму
+        document.getElementById('additionalInfo').style.display = 'none';
+        console.log('Данные доставки сохранены:', { address, entry, comments });
+    }
+
+    if (event.target.id === 'selectOnSiteButton') {
+        // Простое закрытие формы без сохранения данных
+        console.log('Выбрано на месте');
+        document.querySelector('.addressInfo').style.display = 'none';
+    }
 });
+
+
+
 
 
 function increaseCount(itemId) {

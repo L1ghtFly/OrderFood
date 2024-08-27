@@ -15,7 +15,12 @@
         width: 100%;
     }
 }
-
+@font-face {
+    font-family: 'Tex Gyre Schola';
+    src: url('path/to/TexGyreSchola-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     background-color: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
@@ -333,6 +338,44 @@ label {
     background-color: #4CAF50; 
     color: white;
 }
+.outerAddressButtonContainer {
+    display: flex;
+    justify-content: center; /* Выравнивание внутреннего контейнера по центру */
+    align-items: center; /* Вертикальное выравнивание */
+    padding: 2px; /* Внешние отступы для большего пространства вокруг */
+    background-color: #ffffff; /* Светлый фон для внешнего контейнера */
+    border-radius: 10px; /* Скругление углов */
+}
+
+.innerAddressButtonContainer { /* Золотистая рамка вокруг кнопки */
+    padding: 10px; /* Внутренние отступы */
+    border-radius: 10px; /* Скругление углов */
+    background-color: white; /* Белый фон для контраста с внешним контейнером */
+}
+
+#selectDeliveryButton, 
+#selectOnSiteButton{
+    border-radius: 15px;
+    background-color: #FFD700;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px; /* Увеличение отступов для большего удобства */
+    border: none;
+    font-family: 'Tex Gyre Schola', serif;
+    font-weight: bold;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+#selectDeliveryButton:hover,
+#selectOnSiteButton:hover {
+    background-color: #E0C200; /* Светлее при наведении */
+}
+
+
+
+/* Дополнительные стили для улучшения вида формы и элементов */
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);
     background-color: var(--tg-theme-button-color)

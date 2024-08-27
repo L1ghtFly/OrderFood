@@ -23,7 +23,7 @@
         <div class = "delpick">
             <div id="deliveryOptions">
                 <input type="radio" id="localDelivery" name="delivery" value="local" checked>
-                <label for="localDelivery">С собой</label>
+                <label for="localDelivery">На месте</label>
                 <input type="radio" id="homeDelivery" name="delivery" value="delivery">
                 <label for="homeDelivery">Доставка</label>
             </div>
@@ -39,6 +39,11 @@
                     <div class="locationText">
                         <p>Парк Высоких Технологий</p>
                         <p id="street">улица Академика Купревича, 1к3</p>
+                    </div>
+                </div>
+                <div class="outerAddressButtonContainer">
+                    <div class="innerAddressButtonContainer">
+                        <button id="selectOnSiteButton">Выбрать на месте</button>
                     </div>
                 </div>
             </div>
@@ -63,6 +68,11 @@
             </div>
             <label for="comments">Комментарий к адресу</label>
             <input id="comments" name="comments" placeholder="Комментарии...">
+            <div class="outerAddressButtonContainer">
+                <div class="innerAddressButtonContainer">
+                    <button id="selectDeliveryButton">Сохранить и выбрать</button>
+                </div>
+            </div>            
         </div>
         
         
