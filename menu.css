@@ -21,9 +21,12 @@
     font-weight: normal;
     font-style: normal;
 }
+
 body {
     background-color: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
+    font-family: 'Tex Gyre Schola', serif;
+    font-size: 17px;
 }
 nav {
     width: 100%;
@@ -50,7 +53,7 @@ nav h1 {
 /* Контейнер для выпадающего меню */
 .dropdown {
     position: relative;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 .dropdown-content {
     display: none;

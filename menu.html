@@ -125,20 +125,21 @@
                 <i id="mainDropdownIcon" class="fas fa-chevron-down"></i>
             </button>
             <div id="mainDropdown" class="dropdown-content">
-                <!-- Вложенное меню для различных типов основных блюд -->
+                <div class="item" data-category="container">
+                    <span onclick="toggleContainer('cont1')">Контейнер для основных (одноразовый) / 0.50 руб.</span>
+                    <button onclick="addContainer()">Добавить</button>
+                    <button onclick="removeContainer('cont1')">Удалить</button>
+                </div>
+
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown('porkDropdown', event)">Свинина
                         <i id="porkDropdownIcon" class="fas fa-chevron-down"></i>
                     </button>
-                    
                     <div class="dropdown-content" id="porkDropdown">
-                        <div class="item" data-category="main">
-                            Свиные ребрышки / 5.00 - 
-                            <button onclick="decreaseCount('porkCount1', event)">-</button> 
-                            <span id="porkCount1">0</span> 
-                            <button onclick="increaseCount('porkCount1', event)">+</button>
+                        <div class="item" data-category="main" data-price="5.00" data-name="Свиные ребрышки" id="porkCount1">
+                            Свиные ребрышки / 5.00 руб.
+                            <button onclick="addToContainer('porkCount1', 'Свиные ребрышки', 5.00)">Добавить</button>
                         </div>
-                        <!-- Дополнительные подпункты для свинины -->
                     </div>
                 </div>
                 <div class="dropdown">
@@ -147,13 +148,10 @@
                     </button>
                     
                     <div class="dropdown-content" id="beefDropdown">
-                        <div class="item" data-category="main">
-                            Говяжий стейк / 7.00 - 
-                            <button onclick="decreaseCount('beefCount1')">-</button> 
-                            <span id="beefCount1">0</span> 
-                            <button onclick="increaseCount('beefCount1')">+</button>
+                        <div class="item" data-category="main" data-price="7.00" data-name="Говяжий стейк" id="beefCount1">
+                            Говяжий стейк / 7.00 руб
+                            <button onclick="addToContainer('beefCount1', 'Говяжий стейк', 7.00)">Добавить</button>
                         </div>
-                        <!-- Дополнительные подпункты для говядины -->
                     </div>
                 </div>
                 <div class="dropdown">
@@ -162,14 +160,11 @@
                     </button>
                     
                     <div class="dropdown-content" id="chickenDropdown">
-                        <div class="item" data-category="main">
-                            Куриные крылышки / 4.00 -
-                            <button onclick="decreaseCount('chickenCount1')">-</button> 
-                            <span id="chickenCount1">0</span> 
-                            <button onclick="increaseCount('chickenCount1')">+</button>
+                        <div class="item" data-category="main" data-price="4.00" data-name=" Куриные крылышки" id="chickenCount1">
+                            Куриные крылышки / 4.00 руб
+                            <button onclick="addToContainer('chickenCount1', 'Куриные крылышки', 4.00)">Добавить</button>
                         </div>
                                               
-                        <!-- Дополнительные подпункты для курицы -->
                     </div>
                 </div>
                 <div class="dropdown">
@@ -177,20 +172,39 @@
                         <i id="fishDropdownIcon" class="fas fa-chevron-down"></i>
                     </button>
                     
-                    <div class="dropdown-content" id="fishDropdown">
-                        <div class="item" data-category="main">
-                            Рыба запеченая с лимоном / 15.50 -
-                            <button onclick="decreaseCount('fishCount1')">-</button> 
-                            <span id="fishCount1">0</span> 
-                            <button onclick="increaseCount('fishCount1')">+</button>
-                        </div>
-                                              
+                    <div class="dropdown-content" id="fishDropdown" data-price="15.50" data-name="Рыба запеченая с лимоном" id="fishCount1">
+                        <div class="item" data-category="main" >
+                            Рыба запеченая с лимоном / 15.50 
+                            <button onclick="addToContainer('fishCount1', 'Рыба запеченая с лимоном', 15.50)">Добавить</button>
+                        </div>              
                         <!-- Дополнительные подпункты для курицы -->
                     </div>
                     
                 </div>
-                
-            </div>
+                <div class="dropdown">
+                    <button class="dropbtn" id="sidisButton" onclick="toggleDropdown('sidisDropdown', event)">
+                        Гарниры
+                        <i id="sidisDropdownIcon" class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content main-dropdown-content" id="sidisDropdown">
+                        <div class="item" data-category="side" data-price="5.50" data-name=" Овощное рагу" id="sideCount1">
+                            Овощное рагу / 5.50 
+                            <button onclick="addToContainer('sideCount1', 'Овощное рагу', 5.50)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="side" data-price="3.50" data-name="Картофель запеч. молодой" id="sideCount2">
+                            Картофель запеч. молодой / 3.50 
+                            <button onclick="addToContainer('sideCount2', 'Картофель запеч. молодой', 3.50)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="side" data-price="3.40" data-name="Каша перловая с грибами" id="sideCount3">
+                            Каша перловая с грибами / 3.40
+                            <button onclick="addToContainer('sideCount3', 'Картофель запеч. молодой', 3.40)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="side" data-price="2.30" data-name="Каша рисовая рассыпчатая" id="sideCount4">
+                            Каша рисовая рассыпчатая / 2.30 
+                            <button onclick="addToContainer('sideCount4', 'Каша рисовая рассыпчатая', 2.30)">Добавить</button>
+                        </div>
+                    </div>
+                </div>
         </div>
         <div class="dropdown">
             <button class="dropbtn" id="vegeButton" onclick="toggleDropdown('vegeDropdown', event)">
@@ -210,31 +224,11 @@
                 <div class="item" >
                     Блинчики с  яблоками / 4.60 - <button onclick="decreaseCount('vegeCount3')">-</button> <span id="vegeCount3">0</span> <button onclick="increaseCount('vegeCount3')">+</button>
                 </div>
-                
             </div>
         </div>
-        <div class="dropdown">
-            <button class="dropbtn" id="sidisButton" onclick="toggleDropdown('sidisDropdown', event)">
-                5. Гарниры
-                <i id="sidisDropdownIcon" class="fas fa-chevron-down"></i>
-            </button>
-            <div class="dropdown-content main-dropdown-content" id="sidisDropdown">
-                <div class="item" data-category="side">
-                    Овощное рагу / 5.50 - <button onclick="decreaseCount('sidisCount1')">-</button> <span id="sidisCount1">0</span> <button onclick="increaseCount('sidisCount1')">+</button>
-                </div>
-                <div class="item" data-category="side">
-                    Картофель запеч. молодой / 3.50 - <button onclick="decreaseCount('sidisCount2')">-</button> <span id="sidisCount2">0</span> <button onclick="increaseCount('sidisCount2')">+</button>
-                </div>
-                <div class="item" data-category="side">
-                    Каша перловая с грибами / 3.40 - <button onclick="decreaseCount('sidisCount3')">-</button> <span id="sidisCount3">0</span> <button onclick="increaseCount('sidisCount3')">+</button>
-                </div>
-                <div class="item" data-category="side">
-                    Каша рисовая рассыпчатая / 2.30 - <button onclick="decreaseCount('sidisCount4')">-</button> <span id="sidisCount4">0</span> <button onclick="increaseCount('sidisCount4')">+</button>
-                </div>
-            </div>
             <div class="dropdown">
                 <button class="dropbtn" id="contButton" onclick="toggleDropdown('contDropdown', event)">
-                    6. Контейнеры
+                    5. Контейнеры
                     <i id="contDropdownIcon" class="fas fa-chevron-down"></i>
                 </button>
                 <div class="dropdown-content main-dropdown-content" id="contDropdown">
