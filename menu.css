@@ -1,20 +1,4 @@
 /* Стилизация кнопок выпадающего меню */
-@media (max-width: 600px) {
-    #menu {
-        font-size: 14px;
-    }
-    .dropdown {
-        width: 100%;
-    }
-    .dropbtn {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-    }
-    .dropdown-content {
-        width: 100%;
-    }
-}
 @font-face {
     font-family: 'Tex Gyre Schola';
     src: url('path/to/TexGyreSchola-Regular.ttf') format('truetype');
@@ -317,6 +301,7 @@ button.remove-button:active {
     background-color: #000000; /* Золотой/жёлтый цвет для активной кнопки */
     color: #ffffff;
 }
+
 .hub{
     display: block;
 }
