@@ -144,7 +144,7 @@ function updateSaladContainers() {
     // Добавляем или обновляем контейнер в заказ
     var orderList = document.getElementById('orderList');
     var containerListItem = document.getElementById('contCount1_order');
-    var containerPrice = 0.40; // Цена за один контейнер
+    var containerPrice = 0.50; // Цена за один контейнер
 
     if (containerListItem) {
         containerListItem.textContent = 'Контейнер для салата x ' + totalSalads + ' = ' + (totalSalads * containerPrice).toFixed(2) + ' руб.';
