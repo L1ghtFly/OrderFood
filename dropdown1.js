@@ -287,16 +287,18 @@ function updateOrderList(countElement, currentCount) {
 
 let containers = [];  // Массив для хранения всех контейнеров
 
-function addContainer() {
-    if (containers.length > 0 && containers[containers.length - 1].dishes.length === 0) {
+function addContainer(type = 'container') {
+    let containerPrice = type === 'container' ? 0.50 : 0.00; // Пакет бесплатно, контейнер стоит 0.50 руб.
+    let newContainerId = 'cont' + (containers.length + 1);
+
+    if (containers.length > 0 && containers[containers.length - 1].dishes.length === 0 && containers[containers.length - 1].type === type) {
         alert("Завершите заполнение текущего контейнера перед добавлением нового!");
         return;
     }
-    const containerPrice = 0.50; // предполагаемая стоимость контейнера
-    let newContainerId = 'cont' + (containers.length + 1);
-    containers.push({ id: newContainerId, dishes: [], price: containerPrice });
+
+    containers.push({ id: newContainerId, type: type, dishes: [], price: containerPrice });
     updateOrderSummary();
-    alert("Новый контейнер добавлен!");
+    alert(`Новый ${type === 'container' ? 'контейнер' : 'пакет'} добавлен!`);
 }
 
 function addToContainer(dishId, dishName, price) {
@@ -353,22 +355,25 @@ function updateOrderSummary() {
         const li = document.createElement("li");
         li.id = `container-${container.id}`;
         li.className = 'container-item';
-        li.textContent = `Контейнер ${index + 1} (${container.price.toFixed(2)}): `;
+        li.textContent = `${container.type === 'container' ? 'Контейнер' : 'Пакет'} ${index + 1} (${container.price.toFixed(2)}): `;
 
         container.dishes.forEach(dish => {
             li.textContent += `${dish.name} (${dish.count}x), `;
         });
 
         const removeButton = document.createElement("button");
-        removeButton.textContent = "Удалить";
+        // Установка текста и класса для кнопки, включая иконку
+        removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        removeButton.className = 'remove-button';
         removeButton.onclick = function() { removeContainer(container.id); };
+        
         li.appendChild(removeButton);
-
         ul.appendChild(li);
     });
 
     calculateTotal();
 }
+
 
 
 function calculateTotal() {

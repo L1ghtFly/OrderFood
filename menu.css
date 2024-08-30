@@ -41,15 +41,19 @@ nav h1 {
     font-weight: bold;
 }
 .dropbtn {
-    background-color: var(--tg-theme-button-color); /* Используем переменную или fallback цвет */
-    color: var(--tg-theme-button-text-color);
+    background-color: white; /* Используем переменную или fallback цвет */
+    color: black;
     padding: 5px 10px;
-    font-size: 16px;
+    font-family: 'Tex Gyre Schola', serif;
+    font-weight: bold;
+    font-size: 18px;
     border: none;
     cursor: pointer;
     outline: none;
 }
-
+.dropbtn:hover {
+    transform: scale(1.1);
+}
 /* Контейнер для выпадающего меню */
 .dropdown {
     position: relative;
@@ -63,7 +67,7 @@ nav h1 {
 .dropdown-content {
     display: none;
     position: relative; /* Исправлено на absolute для корректного позиционирования */
-    background-color: var(--tg-theme-bg-color);
+    background-color: white;
     min-width: 220px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
@@ -96,58 +100,64 @@ nav h1 {
     gap: 8px;
     padding: 5px;
 }
+#saladDropdown span,
+#soupDropdown span {
+    display: inline-block;  /* Делает элементы блочно-строчными, что позволяет устанавливать ширину и высоту */
+    width: 20px;            /* Ширина каждого элемента */
+    height: 20px;           /* Высота каждого элемента */
+    line-height: 20px;      /* Центрирование текста по вертикали */
+    text-align: center;     /* Центрирование текста по горизонтали */
+    margin: 0 2px;          /* Отступы между элементами */
+    font-size: 18px;        /* Размер шрифта */
+}
+/* Основные стили для всех dropdown кнопок */
+/* Стилизация кнопок + и - */
 #saladDropdown button,
 #soupDropdown button,
-#porkDropdown button,
-#beefDropdown button,
-#chickenDropdown button, 
-#fishDropdown button,
-#vegeDropdown button,
-#sidisDropdown button{
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    color: black;
-    background-color: rgb(181, 183, 186);
+.decreaseCount, .increaseCount {  /* Добавлены классы для кнопок + и - */
+    border-radius: 5px;  
+    width: 20px; /* Устанавливаем фиксированную ширину для всех кнопок */
+    height: 20px; /* Устанавливаем фиксированную высоту для всех кнопок */
+    font-size: 16px;      /* Размер шрифта, с учетом маленького размера кнопок */
+    border: none;              /* Без рамки */
+    cursor: pointer;           /* Курсор указатель */
+    color: white;              /* Белый цвет текста */
+    background-color: black;   /* Черный фон */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Плавные переходы для трансформации и цвета фона */
 }
+
+/* Hover эффекты для всех кнопок */
 #saladDropdown button:hover,
-#soupDropdown button:hover {
-    background-color: var(--tg-theme-accent-text-color);
-    transform: scale(1.1);
+#soupDropdown button:hover,
+.decreaseCount:hover, .increaseCount:hover {  /* Добавлены hover эффекты для кнопок + и - */
+    color: black;
+    background-color: white; /* Светло-серый фон при наведении */
+    transform: scale(1.1);   /* Увеличение кнопки */
 }
 
-.btn-count {
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    border: none;
-    font-size: 14px;
-    padding: 5px;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    width: 20px;
-    height: 20px;
+
+
+
+button.remove-button {
+    background-color: #ffffff; /* белый */
+    color: black;
+    padding: 6px 14px; /* Внутренние отступы */
+    border-radius: 5px; /* Скруглённые углы */
+    cursor: pointer; /* Курсор в виде указателя */
+    transition: background-color 0.3s; /* Плавное изменение фона */
 }
 
-.btn-count i {
-    font-size: 16px;
+button.remove-button:hover {
+    background-color: #ffffff; /* белее при наведении */
+    color: black;
+    border: 1px solid #ccc; /* Темно-красный фон при наведении */
+}
+button.remove-button:active {
+    transform: scale(0.95); /* Уменьшение при нажатии */
 }
 
-.btn-count:hover {
-    background-color: var(--tg-theme-accent-text-color);
-    transform: scale(1.1);
-}
-
-.item span {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 2px;
-    height: 30px;
-    line-height: 30px;
-}
-.item button {
+#mainDropdown button,
+#vegeDropdown button{
     padding: 8px 16px;
     margin-left: 10px; /* гарантирует отступ между кнопками */
     font-size: 14px;
@@ -158,22 +168,34 @@ nav h1 {
 }
 
 /* Цвета и стили для кнопок "Добавить" и "Удалить" */
-.item button:nth-of-type(1) {
-    background-color: #4CAF50; /* зеленый */
+#mainDropdown button:nth-of-type(1),
+#vegeDropdown button:nth-of-type(1) {
+    background-color: #000000; /* черный */
+    color: white;
+    margin-left: 7px;
+}
+
+#mainDropdown button:nth-of-type(2),
+#vegeDropdown button:nth-of-type(2) {
+    background-color: #ffffff; /* белый */
+    color: black;
+    border: 1px solid #ccc; /* добавим тонкую границу для лучшей видимости на светлом фоне */
+}
+
+/* При наведении добавляет эффект тени и изменение цвета */
+#mainDropdown button:nth-of-type(1):hover,
+#vegeDropdown button:nth-of-type(1):hover {
+    background-color: #ffffff; /* белее при наведении */
+    color: black;
+    border: 1px solid #ccc;
+}
+
+#mainDropdown button:nth-of-type(2):hover, 
+#vegeDropdown button:nth-of-type(2):hover{
+    background-color: #333333; /* темнее при наведении */
     color: white;
 }
 
-.item button:nth-of-type(2) {
-    background-color: #f44336; /* красный */
-    color: white;
-}
-
-/* При наведении добавляет эффект тени */
-.item button:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    background-color: #333;
-    color: white;
-}
 .dropbtn .icon {
     display: inline-block;
     transition: transform 0.3s; /* Плавная анимация вращения */
@@ -247,10 +269,7 @@ input[type="radio"] {
     display: none;
 }
 
-#deliveryOptions input[type="radio"]:checked + label {
-    background-color: #FFD700; /* Золотой/жёлтый цвет для активной кнопки */
-    color: #ffffff;
-}
+
 
 #deliveryOptions label:hover {
     background-color: #cccccc; /* Серый цвет при наведении */
@@ -303,8 +322,8 @@ input[type="radio"] {
 
 
 #deliveryOptions input[type="radio"]:checked + label {
-    background-color: #FFD700; /* Желтый */
-    color: #FFF;
+    background-color: #000000; /* Золотой/жёлтый цвет для активной кнопки */
+    color: #ffffff;
 }
 .hub{
     display: block;
@@ -353,8 +372,7 @@ img {
 }
 
 #comments:focus {
-    border-color: #66afe9; /* Изменение цвета границы при фокусе */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(102, 175, 233, 0.6); /* Усиленная тень при фокусе */
+    border-color: #000000; /* Изменение цвета границы при фокусе */
 }
 
 label {
@@ -386,7 +404,7 @@ label {
 #selectDeliveryButton, 
 #selectOnSiteButton{
     border-radius: 15px;
-    background-color: #FFD700;
+    background-color: #000000;
     color: white;
     font-size: 20px;
     cursor: pointer;
@@ -400,7 +418,7 @@ label {
 
 #selectDeliveryButton:hover,
 #selectOnSiteButton:hover {
-    background-color: #E0C200; /* Светлее при наведении */
+    background-color: #cecece; /* Светлее при наведении */
 }
 
 
