@@ -90,37 +90,40 @@ nav h1 {
 }
 #saladDropdown span,
 #soupDropdown span {
-    display: inline-block;  /* Делает элементы блочно-строчными, что позволяет устанавливать ширину и высоту */
-    width: 20px;            /* Ширина каждого элемента */
-    height: 20px;           /* Высота каждого элемента */
-    line-height: 20px;      /* Центрирование текста по вертикали */
-    text-align: center;     /* Центрирование текста по горизонтали */
-    margin: 0 2px;          /* Отступы между элементами */
-    font-size: 18px;        /* Размер шрифта */
+    display: inline-block;   /* Делает элементы блочно-строчными, что позволяет устанавливать ширину и высоту */
+    width: 20px;             /* Ширина каждого элемента, уменьшена до 20px */
+    height: 20px;            /* Высота каждого элемента, уменьшена до 20px */
+    line-height: 20px;       /* Центрирование текста по вертикали */
+    text-align: center;      /* Центрирование текста по горизонтали */
+    font-size: 16px;         /* Размер шрифта, адаптирован под меньший размер */
+    
+    background-color: white; /* Фон, чтобы он отличался от кнопок, если нужно */
+    color: black;            /* Цвет текста */
+    vertical-align: middle;  /* Выравнивание по вертикали в строке с кнопками */
 }
-/* Основные стили для всех dropdown кнопок */
+
 /* Стилизация кнопок + и - */
 #saladDropdown button,
 #soupDropdown button,
-.decreaseCount, .increaseCount {  /* Добавлены классы для кнопок + и - */
-    border-radius: 5px;  
+.decreaseCount, .increaseCount {
+    border-radius: 5px;
     width: 20px; /* Устанавливаем фиксированную ширину для всех кнопок */
-    height: auto; /* Устанавливаем фиксированную высоту для всех кнопок */
-    font-size: 16px;      /* Размер шрифта, с учетом маленького размера кнопок */
-    border: none;              /* Без рамки */
-    cursor: pointer;           /* Курсор указатель */
-    color: white;              /* Белый цвет текста */
-    background-color: black;   /* Черный фон */
+    height: 20px; /* Устанавливаем фиксированную высоту для всех кнопок */
+    font-size: 14px; /* Размер шрифта, адаптирован под меньший размер кнопок */
+    border: none; /* Без рамки */
+    cursor: pointer; /* Курсор указатель */
+    color: white; /* Белый цвет текста */
+    background-color: black; /* Черный фон */
     transition: transform 0.3s ease, background-color 0.3s ease; /* Плавные переходы для трансформации и цвета фона */
 }
 
 /* Hover эффекты для всех кнопок */
 #saladDropdown button:hover,
 #soupDropdown button:hover,
-.decreaseCount:hover, .increaseCount:hover {  /* Добавлены hover эффекты для кнопок + и - */
+.decreaseCount:hover, .increaseCount:hover {
     color: black;
     background-color: white; /* Светло-серый фон при наведении */
-    transform: scale(1.1);   /* Увеличение кнопки */
+    transform: scale(1.1); /* Увеличение кнопки */
 }
 
 
