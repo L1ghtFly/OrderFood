@@ -21,7 +21,7 @@ async def send_welcome(message: types.Message):
     # Инициализация клавиатуры с кнопкой
     markup = types.ReplyKeyboardMarkup(keyboard=[[button]], resize_keyboard=True)
     
-    await message.answer("Закать по копке", reply_markup=markup)
+    await message.answer('Бот для удобного заказа еды в "Любимой Столовой": просматривай меню, заказывай на доставку или самовывоз.', reply_markup=markup)
 
 # Запуск бота
 async def main():

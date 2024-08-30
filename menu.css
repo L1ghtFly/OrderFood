@@ -100,6 +100,11 @@ nav h1 {
     gap: 8px;
     padding: 5px;
 }
+#conter span{
+    font-family: 'Tex Gyre Schola', serif;
+    font-weight: bold;
+    font-size: 18px;
+}
 #saladDropdown span,
 #soupDropdown span {
     display: inline-block;  /* Делает элементы блочно-строчными, что позволяет устанавливать ширину и высоту */
