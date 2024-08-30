@@ -75,23 +75,23 @@ nav h1 {
 
 /* Стили для элементов меню */
 .dropdown-content .item {
-    color: var(--tg-theme-text-color);
+    color: rgb(0, 0, 0);
     padding: 4px 12px;
     display: block;
 }
 
 /* Изменение фона элемента меню при наведении */
 .dropdown-content .item:hover {
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color:rgb(255, 255, 255);
 }
 
 /* Изменить фон кнопки при наведении */
 .dropdown:hover .dropbtn {
-    background-color: var(--tg-theme-accent-text-color);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .menu {
-    color: var(--tg-theme-link-color);
+    color: rgb(0, 0, 0);
 }
 
 .item {
@@ -207,8 +207,8 @@ button.remove-button:active {
 #confirm {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
+    background-color: black;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -216,12 +216,12 @@ button.remove-button:active {
 }
 
 #confirm:hover {
-    background-color: var(--tg-theme-button-color); /* Темно-зеленый цвет при наведении */
+    background-color: #333333; /* Темно-зеленый цвет при наведении */
     transform: scale(1.05); /* Небольшое увеличение размера */
 }
 
 #confirm:active {
-    background-color: var(--tg-theme-accent-text-color); /* Еще более темный зеленый цвет при нажатии */
+    background-color: #333333; /* Еще более темный зеленый цвет при нажатии */
     transform: scale(0.95); /* Сжатие при нажатии */
 }
 
@@ -229,30 +229,17 @@ button.remove-button:active {
     outline: none; /* Убираем контур при фокусе для эстетичности */
 }
 #orderSummary {
-    background-color: var(--tg-theme-section-bg-color);
-    border-color: var(--tg-theme-section-separator-color);
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #orderSummary h2 {
-    background-color: var(--tg-theme-header-bg-color);
-    color: var(--tg-theme-section-header-text-color);
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-#orderList li {
-    color: var(--tg-theme-text-color);
-}
-
-#deliveryOptions label {
-    color: var(--tg-theme-hint-color);
-}
-input[type="radio"] {
-    accent-color: var(--tg-theme-accent-text-color);
-}
-.delpick{
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для блока */
-    width: 100%;
-    border-radius: 10px; /* Округлые края для всего блока */
-}
 
 #deliveryOptions label {
     background-color: #f0f0f0; /* Серый фон для неактивных кнопок */
@@ -276,18 +263,18 @@ input[type="radio"] {
 }
 
 #additionalInfo {
-    display: block;
-    margin-top: 20px;
+    display: flex; /* Включаем flex для всего контейнера адреса */
+    align-items: center; /* Центрируем содержимое по вертикали */
+    margin-top: 4px;
     padding: 15px;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #additionalInfo .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Разделение пространства на две колонки */
-    gap: 20px; /* Отступ между колонками */
+    gap: 25px; /* Отступ между колонками */
 }
 
 #additionalInfo label {
@@ -301,8 +288,8 @@ input[type="radio"] {
     width: 100%; /* Исправлено с 99% на 100% для полного заполнения колонки */
     padding: 8px;
     border-radius: 8px;
-    background-color: #848484c2; /* Серый фоновый цвет с непрозрачностью */
-    border: none;
+    background-color: #ffffff; /* Серый фоновый цвет с непрозрачностью */
+    border: 1px solid #000000;
     margin-bottom: 10px;
 }
 
@@ -361,12 +348,12 @@ img {
     width: 100%; /* Занимает всю ширину контейнера */
     height: 20px; /* Уменьшенная высота */
     padding: 8px; /* Поле вокруг текста внутри textarea */
-    border: 1px solid #ccc; /* Легкая, тонкая граница */
+    border: 1px solid #000000; /* Легкая, тонкая граница */
     border-radius: 4px; /* Скругленные углы */
     resize: none; /* Запрет на изменение размера пользователем */
     font-size: 14px; /* Размер шрифта текста */
     line-height: 1.5; /* Межстрочный интервал */
-    color: #666; /* Цвет текста */
+    color: #000000; /* Цвет текста */
     background-color: #fff; /* Фоновый цвет */
     outline: none; /* Убираем контур при фокусе */
 }
@@ -375,17 +362,7 @@ img {
     border-color: #000000; /* Изменение цвета границы при фокусе */
 }
 
-label {
-    display: block; /* Сделать метку блочным элементом */
-    margin-bottom: 5px; /* Отступ перед текстовым полем */
-    color: #333; /* Цвет текста метки */
-    font-size: 16px; /* Размер шрифта метки */
-}
 
-.selected {
-    background-color: #4CAF50; 
-    color: white;
-}
 .outerAddressButtonContainer {
     display: flex;
     justify-content: center; /* Выравнивание внутреннего контейнера по центру */
