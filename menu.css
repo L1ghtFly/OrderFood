@@ -107,10 +107,6 @@ nav h1 {
 #soupDropdown button,
 .decreaseCount, .increaseCount {
     border-radius: 5px;
-    width: 20px; /* Устанавливаем фиксированную ширину для всех кнопок */
-    height: 20px; /* Устанавливаем фиксированную высоту для всех кнопок */
-    font-size: 14px; /* Размер шрифта, адаптирован под меньший размер кнопок */
-    border: none; /* Без рамки */
     cursor: pointer; /* Курсор указатель */
     color: white; /* Белый цвет текста */
     background-color: black; /* Черный фон */
