@@ -106,17 +106,19 @@ nav h1 {
 #saladDropdown button,
 #soupDropdown button,
 .decreaseCount, .increaseCount {
-    display: inline-block;   /* Обеспечивает корректное выравнивание */
-    padding: 5px 10px;       /* Внутренние отступы для формирования размера кнопок */
-    line-height: 20px;       /* Выравнивание текста по вертикали */
-    text-align: center;      /* Выравнивание текста по горизонтали */
-    font-size: 14px;         /* Подходящий размер шрифта для кнопок */
-    border-radius: 5px;      /* Скругленные углы */
-    cursor: pointer;         /* Курсор указатель */
-    color: white;            /* Белый цвет текста */
-    background-color: black; /* Черный фон */
-    border: none;            /* Удаление стандартной границы */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Плавные переходы для трансформации и цвета фона */
+    display: inline-block;
+    padding: 5px 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    border: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Добавлена анимация цвета текста */
 }
 
 /* Hover эффекты для всех кнопок */
@@ -125,7 +127,16 @@ nav h1 {
 .decreaseCount:hover, .increaseCount:hover {
     color: black;
     background-color: white; /* Светло-серый фон при наведении */
-    transform: scale(1.1);   /* Увеличение кнопки для визуального выделения */
+    transform: scale(1.1);   /* Увеличение кнопки */
+}
+
+/* Active эффекты для всех кнопок при клике/тапе */
+#saladDropdown button:active,
+#soupDropdown button:active,
+.decreaseCount:active, .increaseCount:active {
+    background-color: white; /* Фон становится белым */
+    color: black;            /* Текст становится черным */
+    transform: scale(0.9);   /* Уменьшение кнопки для эффекта нажатия */
 }
 
 
