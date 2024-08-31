@@ -53,28 +53,40 @@ function addContainerToOrder() {
 }
 
 
+var deliveryType = "local";  // Начальное значение, соответствует отмеченной радиокнопке
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var localDelivery = document.getElementById('localDelivery');
     var addressInfo = document.querySelector('.addressInfo');
+    var paymentMethodDisplay = document.getElementById('paymentMethodDisplay');
+    var paymentMethod = document.getElementById('paymentMethod');
 
     document.querySelectorAll('input[name="delivery"]').forEach(function(radio) {
         radio.addEventListener('change', function() {
             if (localDelivery.checked) {
                 addressInfo.style.display = 'block';
+                paymentMethod.textContent = "Оплата на месте";
+                paymentMethodDisplay.style.display = 'block';
             } else {
                 addressInfo.style.display = 'none';
+                paymentMethod.textContent = "Оплата наличными";
+                paymentMethodDisplay.style.display = 'block';
             }
         });
     });
 
-    // Установить начальное состояние
+    // Установить начальное состояние в зависимости от текущего выбора доставки
+    if (localDelivery.checked) {
+        paymentMethod.textContent = "Оплата на месте";
+        paymentMethodDisplay.style.display = 'block';
+    } else {
+        paymentMethod.textContent = "Оплата наличными";
+        paymentMethodDisplay.style.display = 'block';
+    }
     addressInfo.style.display = localDelivery.checked ? 'block' : 'none';
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Изначально скрываем все категории блюд, пока не будет выбран контейнер
-    document.getElementById('mainCategories').style.display = 'none';
-});
 
 // Обработчик для закрытия всех выпадающих меню, когда клик произошел вне их области
 document.addEventListener('click', function(event) {
@@ -303,7 +315,7 @@ function addContainer(type = 'container') {
 
 function addToContainer(dishId, dishName, price) {
     if (containers.length === 0) {
-        alert("Сначала добавьте контейнер!");
+        alert("Сначала создайте контейнер!");
         return;
     }
     
@@ -404,8 +416,38 @@ function calculateTotal() {
     document.getElementById("totalPrice").textContent = total.toFixed(2);
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    populateTimeOptions();
+});
 
+function populateTimeOptions() {
+    const startTime = "09:00";
+    const endTime = "13:00";
+    const interval = 30; // minutes
+
+    const timeSelect = document.getElementById('timeRange');
+    let currentTime = moment(startTime, 'HH:mm');
+    let endTimeMoment = moment(endTime, 'HH:mm');
+
+    while (currentTime <= endTimeMoment) {
+        let timeOption = document.createElement('option');
+        let nextTime = moment(currentTime).add(interval, 'minutes');
+        
+        timeOption.value = currentTime.format('HH:mm') + ' - ' + nextTime.format('HH:mm');
+        timeOption.text = currentTime.format('HH:mm') + ' - ' + nextTime.format('HH:mm');
+
+        timeSelect.appendChild(timeOption);
+        currentTime.add(interval, 'minutes');
+    }
+}
 function submitOrder() {
+    // Получаем выбранные значения для времени и способа оплаты
+    let selectedTime = document.getElementById('timeRange').value;
+    let paymentType = document.getElementById('paymentMethod').textContent;
+
+    // Определяем тип доставки на основе способа оплаты
+    let deliveryType = paymentType === "Оплата на месте" ? "На месте" : "Доставка";
+
     // Собираем информацию по контейнерам
     let containerDetails = containers.map(container => {
         return `Контейнер ${container.id}: ` + container.dishes.map(d => `${d.name} (${d.count}x)`).join(", ");
@@ -417,20 +459,28 @@ function submitOrder() {
         otherDishesDetails.push(item.textContent);
     });
 
-    // Объединяем информацию контейнеров и отдельных блюд
-    let orderDetails = [containerDetails, ...otherDishesDetails].filter(detail => detail).join("\n");
-
-    // Показываем полную информацию заказа в предупреждении
+    // Объединяем всю информацию о заказе
+    let orderDetails = [
+        `Тип заказа: ${deliveryType}`,
+        `Способ оплаты: ${paymentType}`,
+        `Выбранное время: ${selectedTime}`,
+        containerDetails,
+        ...otherDishesDetails
+    ].filter(detail => detail).join("\n"); // Фильтруем для удаления пустых строк и объединяем все детали в одну строку.
+    
+    // Показываем полную информацию заказа
     alert(`Ваш заказ:\n${orderDetails}\nИтого: ${document.getElementById("totalPrice").textContent}`);
 
-    // Очищаем данные заказа
+    // Очищаем данные заказа после подтверждения
     containers = [];  // Очищаем массив контейнеров
     document.getElementById("orderList").innerHTML = '';  // Очищаем HTML списка заказов
     document.getElementById("totalPrice").textContent = '0 руб.';  // Сбрасываем итоговую сумму
 
-    // Обновляем отображение списка заказов
+    // Обновляем отображение списка заказов, если необходимо
     updateOrderSummary();
 }
+
+
 
 
 ymaps.ready(initMaps);
@@ -473,3 +523,4 @@ function initMapWithCircle() {
 
     myMap.geoObjects.add(myCircle);
 }
+

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="menu.css">
     <script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script defer src="mains.js"></script>
@@ -90,16 +91,22 @@
             </button>
             <div class="dropdown-content main-dropdown-content" id="saladDropdown">
                 <div class="item" data-category="salad" data-container-id="contCount1">
-                    Салат с фасолью, сухариками и ветчиной / 3.00 <button onclick="decreaseCount('saladCount1')">-</button> <span id="saladCount1">0</span> <button onclick="increaseCount('saladCount1')">+</button>
+                    Салат "Золотой теленок" / 3.00  <button onclick="decreaseCount('saladCount1')">-</button> <span id="saladCount1">0</span> <button onclick="increaseCount('saladCount1')">+</button>
                 </div>
                 <div class="item" data-category="salad" data-container-id="contCount1">
-                    Салат а-ля “Цезарь” / 3.20 <button onclick="decreaseCount('saladCount2')">-</button> <span id="saladCount2">0</span> <button onclick="increaseCount('saladCount2')">+</button>
+                    Салат "Бунито" / 3.00 <button onclick="decreaseCount('saladCount2')">-</button> <span id="saladCount2">0</span> <button onclick="increaseCount('saladCount2')">+</button>
                 </div>
                 <div class="item" data-category="salad" data-container-id="contCount1">
-                    Салат “Цветик-семицветик” / 3.00 <button onclick="decreaseCount('saladCount3')">-</button> <span id="saladCount3">0</span> <button onclick="increaseCount('saladCount3')">+</button>
+                    Салат "Светофор" / 2.70 <button onclick="decreaseCount('saladCount3')">-</button> <span id="saladCount3">0</span> <button onclick="increaseCount('saladCount3')">+</button>
                 </div>
                 <div class="item" data-category="salad" data-container-id="contCount1">
-                    Салат из белокачанной капусты с помидорами и морковью  / 2.60 <button onclick="decreaseCount('saladCount4')">-</button> <span id="saladCount4">0</span> <button onclick="increaseCount('saladCount4')">+</button>
+                    Салат из сельдерея с помидором и огурцом  / 2.70 <button onclick="decreaseCount('saladCount4')">-</button> <span id="saladCount4">0</span> <button onclick="increaseCount('saladCount4')">+</button>
+                </div>
+                <div class="item" data-category="salad" data-container-id="contCount1">
+                    Салат из моркови с сыром / 2.50 <button onclick="decreaseCount('saladCount5')">-</button> <span id="saladCount5">0</span> <button onclick="increaseCount('saladCount5')">+</button>
+                </div>
+                <div class="item" data-category="salad" data-container-id="contCount1">
+                    Салат из белокачанной капусты с морковью и маслом  / 2.60 <button onclick="decreaseCount('saladCount6')">-</button> <span id="saladCount6">0</span> <button onclick="increaseCount('saladCount6')">+</button>
                 </div>
             </div>
         </div>
@@ -110,15 +117,20 @@
             </button>
             <div id="soupDropdown"   class="dropdown-content">
                 <div class="item" data-category="soup">
-                    Солянка сборная / 5.60 - <button onclick="decreaseCount('soupCount1')">-</button> <span id="soupCount1">0</span> <button onclick="increaseCount('soupCount1')">+</button>
+                    Холодник со свеклой / 5.50 <button onclick="decreaseCount('soupCount1')">-</button> <span id="soupCount1">0</span> <button onclick="increaseCount('soupCount1')">+</button>
                 </div>
                 <div class="item" data-category="soup">
-                    Cуп рыбный из форели / 5.20 - <button onclick="decreaseCount('soupCount2')">-</button> <span id="soupCount2">0</span> <button onclick="increaseCount('soupCount2')">+</button>
+                    Суп с горохом и мясом / 3.80 <button onclick="decreaseCount('soupCount2')">-</button> <span id="soupCount2">0</span> <button onclick="increaseCount('soupCount2')">+</button>
                 </div>
                 <div class="item" data-category="soup">
-                    Рассольник Ленинградский / 3.30 - <button onclick="decreaseCount('soupCount3')">-</button> <span id="soupCount3">0</span> <button onclick="increaseCount('soupCount3')">+</button>
+                    Рассольник Ленинградский / 3.30 <button onclick="decreaseCount('soupCount3')">-</button> <span id="soupCount3">0</span> <button onclick="increaseCount('soupCount3')">+</button>
                 </div>
-                <!-- Дополнительные подпункты с уникальными ID -->
+                <div class="item" data-category="soup">
+                    Бульон куриный с яйцом / 3.50 <button onclick="decreaseCount('soupCount4')">-</button> <span id="soupCount4">0</span> <button onclick="increaseCount('soupCount4')">+</button>
+                </div>
+                <div class="item" data-category="soup">
+                    Суп-пюре тыквенный / 4.40 <button onclick="decreaseCount('soupCount5')">-</button> <span id="soupCount5">0</span> <button onclick="increaseCount('soupCount5')">+</button>
+                </div>
             </div>
         </div>
         <div class="dropdown">
@@ -129,7 +141,7 @@
             <div id="mainDropdown" class="dropdown-content">
                 <div class="item" data-category="container" id="conter">
                     <span onclick="toggleContainer('cont1')">Контейнер(одноразовый) / 0.50 руб.</span>
-                    <button onclick="addContainer()">Добавить</button>
+                    <button onclick="addContainer()">Создать</button>
                 </div>
 
                 <div class="dropdown">
@@ -137,9 +149,21 @@
                         <i id="porkDropdownIcon" class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" id="porkDropdown">
-                        <div class="item" data-category="main" data-price="5.00" data-name="Свиные ребрышки" id="porkCount1">
-                            Свиные ребрышки / 5.00 руб.
-                            <button onclick="addToContainer('porkCount1', 'Свиные ребрышки', 5.00)">Добавить</button>
+                        <div class="item" data-category="main" data-price="4.10" data-name="Бифштекс с помидором" id="porkCount1">
+                            Бифштекс с помидором / 4.10
+                            <button onclick="addToContainer('porkCount1', 'Бифштекс с помидором', 4.10)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="main" data-price="7.20" data-name="Свинина запеченая с сыром и овощами" id="porkCount1">
+                            Свинина запеченая с сыром и овощами / 7.20
+                            <button onclick="addToContainer('porkCount2', ' Свинина запеченая с сыром и овощами', 7.20)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="main" data-price="9.40" data-name="Шея свиная в маринаде" id="porkCount1">
+                            Шея свиная в маринаде / 9.40
+                            <button onclick="addToContainer('porkCount3', 'Шея свиная в маринаде', 9.40)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="main" data-price="8.20" data-name="Оладьи картофельные с мясом" id="porkCount1">
+                            Оладьи картофельные с мясом / 8.20
+                            <button onclick="addToContainer('porkCount4', 'Оладьи картофельные с мясом', 8.20)">Добавить</button>
                         </div>
                     </div>
                 </div>
@@ -149,36 +173,77 @@
                     </button>
                     
                     <div class="dropdown-content" id="beefDropdown">
-                        <div class="item" data-category="main" data-price="7.00" data-name="Говяжий стейк" id="beefCount1">
-                            Говяжий стейк / 7.00 руб
-                            <button onclick="addToContainer('beefCount1', 'Говяжий стейк', 7.00)">Добавить</button>
+                        <div class="item" data-category="main" data-price="9.50" data-name="Говядина запеченая с сыром и перцем" id="beefCount1">
+                            Говядина запеченая с сыром и перцем / 9.50 
+                            <button onclick="addToContainer('beefCount1', 'Говядина запеченая с сыром и перцем', 9.50)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="main" data-price="7.00" data-name="Сэндвич с салями" id="beefCount1">
+                            Сэндвич с салями / 7.00
+                            <button onclick="addToContainer('beefCount1', 'Сэндвич с салями', 7.00)">Добавить</button>
                         </div>
                     </div>
                 </div>
                 <div class="dropdown">
-                    <button class="dropbtn" onclick="toggleDropdown('chickenDropdown', event)">Курица
+                    <button class="dropbtn" onclick="toggleDropdown('chickenDropdown', event)">Птица
                         <i id="chickenDropdownIcon" class="fas fa-chevron-down"></i>
                     </button>
                     
                     <div class="dropdown-content" id="chickenDropdown">
-                        <div class="item" data-category="main" data-price="4.00" data-name=" Куриные крылышки" id="chickenCount1">
-                            Куриные крылышки / 4.00 руб
-                            <button onclick="addToContainer('chickenCount1', 'Куриные крылышки', 4.00)">Добавить</button>
+                        <div class="item" data-category="main" data-price="4.00" data-name="Котлета “Домашняя”" id="chickenCount1">
+                            Котлета “Домашняя” / 4.00
+                            <button onclick="addToContainer('chickenCount1', 'Котлета “Домашняя”', 4.00)">Добавить</button>
                         </div>
-                                              
+                        <div class="item" data-category="main" data-price="8.00" data-name="Плов из птицы" id="chickenCount1">
+                            Плов из птицы / 8.00 
+                            <button onclick="addToContainer('chickenCount2', 'Плов из птицы', 8.00)">Добавить</button>
+                        </div>
+                        <div class="item" data-category="main" data-price="6.80" data-name="Колбаски “Охотничьи” " id="chickenCount1">
+                            Колбаски “Охотничьи” / 6.80
+                            <button onclick="addToContainer('chickenCount3', 'Колбаски “Охотничьи”', 6.80)">Добавить</button>
+                        </div>         
+                        <div class="item" data-category="main" data-price="4.60" data-name="Котлета куриная “Папарать кветка” " id="chickenCount1">
+                            Котлета куриная "Папарать кветка" / 4.60
+                            <button onclick="addToContainer('chickenCount4', 'Колбаски “Охотничьи”', 4.60)">Добавить</button>
+                        </div>   
+                        <div class="item" data-category="main" data-price="5.60" data-name=" Печень куриная в сметанном соусе " id="chickenCount1">
+                            Печень куриная в сметанном соусе / 5.60
+                            <button onclick="addToContainer('chickenCount5', ' Печень куриная в сметанном соусе', 5.60)">Добавить</button>
+                        </div>  
+                        <div class="item" data-category="main" data-price="4.60" data-name=" Бедро в кисло-сладком соусе " id="chickenCount1">
+                            Бедро в кисло-сладком соусе / 4.60
+                            <button onclick="addToContainer('chickenCount6', ' Бедро в кисло-сладком соусе', 4.60)">Добавить</button>
+                        </div>  
+                        <div class="item" data-category="main" data-price="7.50" data-name="Грудка в кисло-сладком соусе " id="chickenCount1">
+                            Грудка в кисло-сладком соусе / 7.50
+                            <button onclick="addToContainer('chickenCount7', 'Грудка в кисло-сладком соусе', 7.50)">Добавить</button>
+                        </div>  
+                        <div class="item" data-category="main" data-price="6.80" data-name="Филе из птицы запеченое с сыром" id="chickenCount1">
+                            Филе из птицы запеченое с сыром / 6.30
+                            <button onclick="addToContainer('chickenCount8', 'Колбаски “Охотничьи”', 6.30)">Добавить</button>
+                        </div>  
+                        <div class="item" data-category="main" data-price="9.00" data-name="Филе индейки запеченое" id="chickenCount1">
+                            Филе индейки запеченое / 9.00
+                            <button onclick="addToContainer('chickenCount9', 'Филе индейки запеченое', 9.00)">Добавить</button>
+                        </div>        
+                        <div class="item" data-category="main" data-price="8.20" data-name=" Птица, запеченная по-монастырски " id="chickenCount1">
+                            Птица, запеченная по-монастырски / 8.20
+                            <button onclick="addToContainer('chickenCount10', ' Птица, запеченная по-монастырски ', 8.20)">Добавить</button>
+                        </div>    
                     </div>
                 </div>
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown('fishDropdown', event)">Рыба
                         <i id="fishDropdownIcon" class="fas fa-chevron-down"></i>
                     </button>
-                    
-                    <div class="dropdown-content" id="fishDropdown" data-price="15.50" data-name="Рыба запеченая с лимоном" id="fishCount1">
-                        <div class="item" data-category="main" >
+                    <div class="dropdown-content" id="fishDropdown">
+                        <div class="item" data-category="main" data-price="15.50" data-name="Рыба запеченая с лимоном" id="fishCount1" >
                             Рыба запеченая с лимоном / 15.50 
                             <button onclick="addToContainer('fishCount1', 'Рыба запеченая с лимоном', 15.50)">Добавить</button>
                         </div>              
-                        <!-- Дополнительные подпункты для курицы -->
+                        <div class="item" data-category="main" data-price="12.60" data-name="Филе запеченое с сыром" id="fishCount2">
+                            Филе запеченое с сыром / 12.60 
+                            <button onclick="addToContainer('fishCount2', 'Филе запеченое с сыром', 12.60)">Добавить</button>
+                        </div>  
                     </div>
                     
                 </div>
@@ -213,9 +278,9 @@
                 <i id="vegeDropdownIcon" class="fas fa-chevron-down"></i>
             </button>
             <div id="vegeDropdown" class="dropdown-content">
-                <div class="item" data-category="container">
+                <div class="item" data-category="container" id="conter">
                     <span onclick="toggleContainer('vegeCont1')">Контейнер(одноразовый) / 0.50 руб.</span>
-                    <button onclick="addContainer('container')">Добавить контейнер</button>
+                    <button onclick="addContainer('container')">Создать</button>
                 </div>
                     <!-- Пример блюда -->
                     <div class="item" data-category="main" data-price="3.50" data-name="Оладьи кабачковые" id="vegeCount1">
@@ -241,15 +306,12 @@
                     5. Контейнеры
                     <i id="contDropdownIcon" class="fas fa-chevron-down"></i>
                 </button>
-                <div class="dropdown-content main-dropdown-content" id="contDropdown">
+                <div class="dropdown-content" id="contDropdown">
                     <div class="item" data-category="container">
-                        Контейнер для салата(одноразовый) / 0.50 - <button onclick="decreaseCount('contCount1')">-</button> <span id="contCount1">0</span> <button onclick="increaseCount('contCount1')">+</button>
+                        Контейнер для салата(одноразовый) / 0.50 <button onclick="decreaseCount('contCount1')">-</button> <span id="contCount1">0</span> <button onclick="increaseCount('contCount1')">+</button>
                     </div>
-                    <div class="item" data-category="container">
-                        Контейнер для супа(одноразовый) / 0.50 - <button onclick="decreaseCount('contCount2')">-</button> <span id="contCount2">0</span> <button onclick="increaseCount('contCount2')">+</button>
-                    </div>
-                    <div class="item" data-category="container">
-                        Контейнер для основых(одноразовый) / 0.50 - <button onclick="decreaseCount('contCount3')">-</button> <span id="contCount3">0</span> <button onclick="increaseCount('contCount3')">+</button>
+                    <div class="item" data-category="container" >
+                        Контейнер для супа(одноразовый) / 0.50 <button onclick="decreaseCount('contCount2')">-</button> <span id="contCount2">0</span> <button onclick="increaseCount('contCount2')">+</button>
                     </div>
                 </div>
             </div>
@@ -257,8 +319,15 @@
     <section id="orderSummary">
         <h2>Ваш заказ:</h2>
         <ul id="orderList"></ul>
-        <p><strong>Итого: <span id="totalPrice">0</span> руб.</strong></p>
-        <button id="confirm" onclick="submitOrder()">Подтвердить заказ</button>
+        <p><strong>Итого: <span id="totalPrice">0</span> руб.</strong></p>   
+        <p id="paymentMethodDisplay" style="display:none;">Способ оплаты: <span id="paymentMethod"></span></p>   
+        <label for="timeRange">Выберите время:</label>
+        <select id="timeRange" name="timeRange" required>
+            <!-- Options should be populated here -->
+        </select>
+        <div>
+            <button id="confirm" onclick="submitOrder()">Подтвердить заказ</button>
+        </div>  
     </section>
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>

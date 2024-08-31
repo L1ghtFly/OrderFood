@@ -89,14 +89,14 @@ nav h1 {
     font-size: 18px;
 }
 #saladDropdown span,
-#soupDropdown span {
+#soupDropdown span,
+#contDropdown span{
     display: inline-block;   /* Делает элементы блочно-строчными, что позволяет устанавливать ширину и высоту */
     width: 20px;             /* Ширина каждого элемента, уменьшена до 20px */
     height: 20px;            /* Высота каждого элемента, уменьшена до 20px */
     line-height: 20px;       /* Центрирование текста по вертикали */
     text-align: center;      /* Центрирование текста по горизонтали */
     font-size: 16px;         /* Размер шрифта, адаптирован под меньший размер */
-    
     background-color: white; /* Фон, чтобы он отличался от кнопок, если нужно */
     color: black;            /* Цвет текста */
     vertical-align: middle;  /* Выравнивание по вертикали в строке с кнопками */
@@ -105,7 +105,8 @@ nav h1 {
 /* Стилизация кнопок + и - */
 #saladDropdown button,
 #soupDropdown button,
-.decreaseCount, .increaseCount {
+.decreaseCount, .increaseCount,
+#contDropdown button {
     display: inline-block;
     padding: 5px 10px;
     width: 30px;
@@ -124,6 +125,7 @@ nav h1 {
 /* Hover эффекты для всех кнопок */
 #saladDropdown button:hover,
 #soupDropdown button:hover,
+#contDropdown button:hover,
 .decreaseCount:hover, .increaseCount:hover {
     color: black;
     background-color: white; /* Светло-серый фон при наведении */
@@ -209,6 +211,7 @@ button.remove-button:active {
 }
 #confirm {
     padding: 10px 20px;
+    margin-top: 10px;
     font-size: 16px;
     background-color: black;
     color: white;
@@ -365,7 +368,9 @@ img {
 #comments:focus {
     border-color: #000000; /* Изменение цвета границы при фокусе */
 }
-
+#cursname {
+    font-style: italic;
+}
 
 .outerAddressButtonContainer {
     display: flex;
@@ -402,8 +407,15 @@ img {
     background-color: #cecece; /* Светлее при наведении */
 }
 
-
-
+#timeRange{
+    padding: 3px;
+    font-size: medium;
+}
+#orderSummary label,
+#orderSummary p{
+    font-family: 'Tex Gyre Schola', serif;
+    font-size: 18px;
+}
 /* Дополнительные стили для улучшения вида формы и элементов */
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);
