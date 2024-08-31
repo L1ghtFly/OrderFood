@@ -368,6 +368,10 @@ img {
 #comments:focus {
     border-color: #000000; /* Изменение цвета границы при фокусе */
 }
+#address:focus, #entry:focus {
+    border-color: #000000; /* Изменение цвета границы при фокусе */
+    outline: none; /* Убрать стандартный контур браузера при фокусе */
+}
 #cursname {
     font-style: italic;
 }
@@ -410,12 +414,26 @@ img {
 #timeRange{
     padding: 3px;
     font-size: medium;
+    color: black;
+    background-color: white;
+    border: 1px solid #000000; /* Устанавливаем стандартный цвет рамки */
+    border-radius: 3px; 
 }
-#orderSummary label,
+
 #orderSummary p{
     font-family: 'Tex Gyre Schola', serif;
     font-size: 18px;
 }
+#orderSummary label{
+    font-family: 'Tex Gyre Schola', serif;
+    font-size: 18px;
+    color:#000000;
+    background-color: white;
+}
+#orderSummary select:focus {
+    outline: none; /* Убираем стандартный outline браузера при фокусе */
+    border: 2px solid #000000; /* Добавляем чёрную рамку при фокусе */
+ }
 /* Дополнительные стили для улучшения вида формы и элементов */
 /* #saladbuttom{
     color: var(--tg-theme-button-text-color);
