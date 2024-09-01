@@ -10,13 +10,13 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    color: var(--tg-theme-text-color);
-    background-color: var(--tg-theme-bg-color);
+    color: black;
+    background-color:white;
 }
   
   nav {
     width: 100%;
-    background: var(--tg-theme-header-bg-color);
+    background: white;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -38,22 +38,24 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 17px;
   }
   
   .signup-btn {
-    color: var(--tg-theme-button-text-color);
-    background-color: var(--tg-theme-button-color);
-  }
+    color: white;
+    background-color: black;
+    transition: background-color 0.3s;
+}
   
   .signup-btn:hover {
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color:white;
+    color:black;
   }
   
   .divider {
     width: 100%;
     height: 1px;
-    background-color: var(--tg-theme-section-separator-color);
+    background-color:black;
     border: none;
   }
   
@@ -76,7 +78,6 @@
     width: 100%;
     background-color: var(--tg-theme-section-bg-color);
     padding: 10px;
-    text-align: center; /* Центровка текста */
   }
   
   .headdas {
@@ -157,9 +158,9 @@
   
   
   .form-group input:focus + label {
-    transform: translateY(-70%) scale(1);
-    background-color: var(--tg-theme-bg-color);
-    color: var(--tg-theme-text-color);
+    transform: translateY(-75%) scale(1);
+    background-color: white;
+    color: black;
     font-size: 12px;
     margin-left: 5px;
     padding: 0 3px; /* Убираем верхний и нижний padding */
@@ -170,24 +171,28 @@
   
   
    .label-top {
-    transform: translateY(-95%) scale(1);
-    color: #B4B4B4;
+    transform: translateY(-75%) scale(1);
+    color: black;
     background-color: white;
-    font-size: 6px;
+    font-size: 12px;
     margin-left: 5px;
-    padding-right: 3px;
-    padding-left: 3px;
+    padding: 0 3px; /* Убираем верхний и нижний padding */
+    display: inline; /* Добавляем это свойство */
+    width: auto; /* Контролируем ширину */
+    height: 5px;
   } 
   
   .terms {
-    font-size: 12px;
+    font-size: 16px;
     text-align: left;
     margin-bottom: 8px;
+    width: 300px;
   }
   
   .terms a {
     color: var(--tg-theme-link-color);
     text-decoration: underline;
+    font-size: 16px;
   }
   
   .custom-checkbox {
@@ -195,14 +200,14 @@
     width: 16px;
     height: 16px;
     background-color: #fff;
-    border: 1px solid var(--tg-theme-text-color);
+    border: 1px solid black;
     border-radius: 4px;
     cursor: pointer;
     position: relative;
   }
   
   .custom-checkbox:checked {
-    background-color: var(--tg-theme-bg-color);
+    background-color: white;
   }
   
   .custom-checkbox:checked::after {

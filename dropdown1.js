@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function populateTimeOptions() {
     const startTime = "09:00";
-    const endTime = "13:00";
+    const endTime = "13:30";
     const interval = 30; // minutes
 
     const timeSelect = document.getElementById('timeRange');

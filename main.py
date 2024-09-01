@@ -16,11 +16,12 @@ dp = Dispatcher()
 async def send_welcome(message: types.Message):
     # Создание кнопки с объектом WebAppInfo
     web_app_info = WebAppInfo(url='https://l1ghtfly.github.io/OrderFood/')  # Замените на фактический URL
-    button = types.KeyboardButton(text='Заказать еду', web_app=web_app_info)
+    button = types.InlineKeyboardButton(text='Заказать еду', web_app=web_app_info)
     
-    # Инициализация клавиатуры с кнопкой
-    markup = types.ReplyKeyboardMarkup(keyboard=[[button]], resize_keyboard=True)
+    # Инициализация инлайн-клавиатуры с кнопкой
+    markup = types.InlineKeyboardMarkup().add(button)
     
+    # Отправка приветственного сообщения с инлайн-клавиатурой
     await message.answer('Бот для удобного заказа еды в "Любимой Столовой": просматривай меню, заказывай на доставку или самовывоз.', reply_markup=markup)
 
 # Запуск бота
