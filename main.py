@@ -19,8 +19,8 @@ async def send_welcome(message: types.Message):
     button = types.InlineKeyboardButton(text='Заказать еду', web_app=web_app_info)
     
     # Инициализация инлайн-клавиатуры с кнопкой
-    markup = types.InlineKeyboardMarkup().add(button)
-    
+    markup = types.InlineKeyboardMarkup()
+    markup.add(types.InlineKeyboardButton('Заказать еду', web_app= WebAppInfo(url='https://l1ghtfly.github.io/OrderFood/')))
     # Отправка приветственного сообщения с инлайн-клавиатурой
     await message.answer('Бот для удобного заказа еды в "Любимой Столовой": просматривай меню, заказывай на доставку или самовывоз.', reply_markup=markup)
 
