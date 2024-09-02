@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Optionally convert data to JSON string if needed
                 let jsonData = JSON.stringify(data);
-
+                tg.sendData = (JSON.stringify(data));
                 // Check if Telegram WebApp API is available and use sendData method
                 if (window.Telegram && window.Telegram.WebApp) {
                     window.Telegram.WebApp.sendData(jsonData);
