@@ -30,16 +30,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     phone: phone
                 };
                 
-                // Optionally convert data to JSON string if needed
+                // Convert data to JSON string if needed
                 let jsonData = JSON.stringify(data);
-                tg.sendData = (JSON.stringify(data));
+
                 // Check if Telegram WebApp API is available and use sendData method
                 if (window.Telegram && window.Telegram.WebApp) {
                     window.Telegram.WebApp.sendData(jsonData);
+                    // Redirect to menu.html or handle the next part of your process
+                    window.location.href = "menu.html";
+                } else {
+                    alert("Ошибка доступа к Telegram WebApp API.");
                 }
-
-                // Redirect to menu.html or handle the next part of your process
-                window.location.href = "menu.html";
             } else {
                 alert("Номер телефона должен начинаться с '+375'");
             }

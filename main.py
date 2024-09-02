@@ -23,7 +23,7 @@ async def send_welcome(message: types.Message):
     web_app_info = WebAppInfo(url='https://l1ghtfly.github.io/OrderFood/')
     button = KeyboardButton(text='Заказать еду', web_app=web_app_info)
     # Используйте InlineKeyboardMarkup сразу с кнопкой
-    markup = ReplyKeyboardMarkup(inline_keyboard=[[button]])
+    markup = ReplyKeyboardMarkup(reply_keyboard=[[button]])
     await message.answer('Бот для удобного заказа еды в "Любимой Столовой": просматривай меню, заказывай на доставку или самовывоз.', reply_markup=markup)
 
 # Запуск бота
