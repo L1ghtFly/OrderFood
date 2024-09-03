@@ -54,19 +54,32 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function() {
-        let rawNumbers = this.value.replace(/\D/g, '');
-        this.value = formatBelarusPhone(rawNumbers);
+    document.addEventListener("DOMContentLoaded", function() {
+        const phoneInput = document.getElementById('phone');
+    
+        phoneInput.addEventListener('input', function() {
+            let rawNumbers = this.value.replace(/\D/g, '');  // Удаление нечисловых символов
+            this.value = formatBelarusPhone(rawNumbers);
+        });
+    
+        function formatBelarusPhone(numbers) {
+            numbers = numbers.replace(/\s+/g, '');  // Удаление пробелов для корректной обработки
+    
+            // Проверка наличия префикса '375' и добавление его при отсутствии
+            if (!numbers.startsWith('375')) {
+                numbers = '375' + numbers;
+            }
+    
+            // Формирование номера с пробелами на нужных позициях
+            const format = numbers.split('');
+            if (format.length > 3) format.splice(3, 0, ' ');
+            if (format.length > 6) format.splice(6, 0, ' ');
+            if (format.length > 9) format.splice(9, 0, ' ');
+    
+            return '+375 ' + format.join('');
+        }
     });
-
-    function formatBelarusPhone(numbers) {
-        const format = numbers.split('');
-        if (format.length > 3) format.splice(3, 0, ' ');
-        if (format.length > 6) format.splice(6, 0, ' ');
-        if (format.length > 9) format.splice(9, 0, ' ');
-        return '+375 ' + format.join('');
-    }
+    
 });
 
 
