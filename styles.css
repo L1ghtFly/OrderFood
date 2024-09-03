@@ -76,7 +76,7 @@
     align-items: center;
     flex: 1;
     width: 100%;
-    background-color: var(--tg-theme-section-bg-color);
+    background-color: white;
     padding: 10px;
   }
   
@@ -84,7 +84,7 @@
     margin-bottom: 8px;
     font-size: 24px;
     font-family: "Semi Bold", Inter, Arial, sans-serif;
-    color: var(--tg-theme-section-header-text-color);
+    color: black;
   }
   
   .registration-form {
@@ -96,10 +96,6 @@
     padding: 10px;
     text-align: center;
   }
-  .registration-form h1 {
-    color: var(--tg-theme-text-color);
-  }
-  
   .registration-form input[type="text"],
   .registration-form input[type="email"],
   .registration-form input[type="password"] {
@@ -128,7 +124,7 @@
     margin-bottom: 8px;
   }
   .registration-form label {
-    color: var(--tg-theme-text-color);
+    color: black;
   }
   
   .form-group {
