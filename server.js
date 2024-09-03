@@ -1,11 +1,11 @@
-const express = require('express');
-const app = express();
-const PORT = 3000;
+const mongoose = require('mongoose');
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+const userSchema = new mongoose.Schema({
+  telegramId: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  phone: { type: String, required: true }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

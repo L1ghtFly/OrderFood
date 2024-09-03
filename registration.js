@@ -54,32 +54,35 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const phoneInput = document.getElementById('phone');
-    
-        phoneInput.addEventListener('input', function() {
-            let rawNumbers = this.value.replace(/\D/g, '');  // Удаление нечисловых символов
-            this.value = formatBelarusPhone(rawNumbers);
-        });
-    
-        function formatBelarusPhone(numbers) {
-            numbers = numbers.replace(/\s+/g, '');  // Удаление пробелов для корректной обработки
-    
-            // Проверка наличия префикса '375' и добавление его при отсутствии
-            if (!numbers.startsWith('375')) {
-                numbers = '375' + numbers;
-            }
-    
-            // Формирование номера с пробелами на нужных позициях
-            const format = numbers.split('');
-            if (format.length > 3) format.splice(3, 0, ' ');
-            if (format.length > 6) format.splice(6, 0, ' ');
-            if (format.length > 9) format.splice(9, 0, ' ');
-    
-            return '+375 ' + format.join('');
-        }
-    });
-    
+       // Phone input formatting for Belarus phone numbers
+       const phoneInput = document.getElementById('phone');
+
+       // Инициализируем поле ввода начальным значением +375
+   
+       phoneInput.addEventListener('input', function() {
+           // Удаляем все нецифровые символы и пробелы
+           let numbers = this.value.replace(/[^\d]/g, '');
+           
+           // Начинаем с +375 только если номер ещё не содержит эти цифры
+           if (!numbers.startsWith('375')) {
+               numbers = '375' + numbers;
+           }
+           
+           // Устанавливаем начальное значение и очищаем оставшуюся часть ввода
+           this.value = '+375';
+           let formattedNumber = '';
+           
+           // Начинаем форматирование с четвертой цифры
+           for (let i = 3; i < numbers.length; i++) {
+               // Словарь для вставки пробелов на нужных позициях
+               let char = {3:' ', 5:' ', 8:' '};
+               formattedNumber += (char[i] ? char[i] : '') + numbers[i];
+           }
+   
+           // Обновляем значение поля ввода
+           this.value += formattedNumber;
+       });
 });
+
 
 
