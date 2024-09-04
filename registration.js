@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let jsonData = JSON.stringify(data);
 
             if (window.Telegram && window.Telegram.WebApp) {
+                console.log("Sending data:", jsonData); // Логируем данные перед отправкой
                 window.Telegram.WebApp.sendData(jsonData);
                 window.location.href = "menu.html";
             } else {
@@ -83,6 +84,4 @@ document.addEventListener("DOMContentLoaded", function() {
            this.value += formattedNumber;
        });
 });
-
-
 

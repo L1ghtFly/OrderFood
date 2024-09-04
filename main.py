@@ -25,7 +25,9 @@ async def send_welcome(message: types.Message):
 
 @dp.message(lambda message: message.content_type == types.ContentType.WEB_APP_DATA)
 async def handle_web_app_data(message: types.Message):
+    print("Received data:", message.web_app_data.data)  # Логирование полученных данных
     data = json.loads(message.web_app_data.data)
+    print("Parsed data:", data)  # Проверка распарсенных данных
     update_result = users_collection.update_one(
         {"telegram_id": message.from_user.id},
         {"$set": {"name": data['name'], "phone": data['phone']}},
