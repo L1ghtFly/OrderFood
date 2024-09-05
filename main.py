@@ -25,21 +25,23 @@ async def send_welcome(message: types.Message):
 
 @dp.message(lambda message: message.content_type == types.ContentType.WEB_APP_DATA)
 async def handle_web_app_data(message: types.Message):
-    print("Received data:", message.web_app_data.data)  # Логирование полученных данных
-    data = json.loads(message.web_app_data.data)
-    print("Parsed data:", data)  # Проверка распарсенных данных
-    update_result = users_collection.update_one(
-        {"telegram_id": message.from_user.id},
-        {"$set": {"name": data['name'], "phone": data['phone']}},
-        upsert=True
-    )
-
-    if update_result.matched_count:
-        await message.answer(f"Данные обновлены: Имя - {data['name']}, Телефон - {data['phone']}")
-    else:
-        await message.answer(f"Данные сохранены: Имя - {data['name']}, Телефон - {data['phone']}")
-
-    await message.answer("Если вы хотите изменить данные, отправьте новые данные.")
+    print("Received data:", message.web_app_data.data)
+    try:
+        data = json.loads(message.web_app_data.data)
+        print("Parsed data:", data)
+        update_result = users_collection.update_one(
+            {"telegram_id": message.from_user.id},
+            {"$set": {"name": data['name'], "phone": data['phone']}},
+            upsert=True
+        )
+        print("Database update result:", update_result.modified_count)
+        if update_result.matched_count:
+            await message.answer(f"Данные обновлены: Имя - {data['name']}, Телефон - {data['phone']}")
+        else:
+            await message.answer(f"Данные сохранены: Имя - {data['name']}, Телефон - {data['phone']}")
+    except Exception as e:
+        print("Error processing data:", str(e))
+        await message.answer("Произошла ошибка при обработке данных.")
 
 async def main():
     await dp.start_polling(bot)

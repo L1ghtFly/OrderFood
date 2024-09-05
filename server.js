@@ -1,12 +1,11 @@
-const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 5000; // Установите порт
 
-const userSchema = new mongoose.Schema({
-  telegramId: { type: String, required: true, unique: true },
-  name: { type: String, required: true },
-  phone: { type: String, required: true }
+// Тут подключение маршрутов
+const userRoutes = require('./routes/userRoutes');
+app.use('/api', userRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
-

@@ -1,0 +1,3 @@
+MONGO_URI=mongodb+srv://username:1u7YpzJg9zjw9Syq@yourcluster/connectionparams
+const PORT = process.env.PORT || 5001; // Измените 5000 на 5001 или любой другой свободный порт
+SECRET_KEY=Ham1h_WfS4Ev_qi5Skccf8PMzc1oi3wM1yZLqdt8lRM
