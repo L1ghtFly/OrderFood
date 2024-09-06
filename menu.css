@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Tex Gyre Schola';
+    src: url('path/to/fonts/TexGyreSchola-Regular.ttf') format('truetype');
+}
 
 body {
     background-color: white;
