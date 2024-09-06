@@ -1,32 +1,27 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json()); // bodyParser.json() встроен в Express с версии 4.16+
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-app.post('/register', (req, res) => {
-    const userData = req.body; // получаем данные пользователя из тела запроса
-    console.log(userData); // выводим данные в консоль для проверки
+// Подключение к MongoDB
+mongoose.connect('mongodb://localhost/mydatabase', {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+})
+.then(() => console.log('MongoDB connected successfully'))
+.catch(err => console.error('MongoDB connection error:', err));
 
-    // Здесь добавьте логику для сохранения данных в базу данных
-    // Например, код для сохранения данных в MongoDB
-
-    res.status(201).send({ success: true, message: 'User registered', data: userData });
-});
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true });
-
+// Определение схемы и модели пользователя
 const UserSchema = new mongoose.Schema({
     name: String,
     phone: String
 });
-
 const User = mongoose.model('User', UserSchema);
+
+// Роут для регистрации пользователя
 app.post('/register', async (req, res) => {
     try {
         const newUser = new User(req.body);
@@ -35,4 +30,9 @@ app.post('/register', async (req, res) => {
     } catch (error) {
         res.status(500).send({ success: false, message: error.message });
     }
+});
+
+// Запуск сервера
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
