@@ -1,21 +1,38 @@
 const express = require('express');
-const mongodbClient = require('./database');
-const app = express();
-const PORT = 3000;
+const bodyParser = require('body-parser');
 
-app.get('/', async (req, res) => {
-  try {
-    await mongodbClient.connect();
-    const pingResult = await mongodbClient.db("admin").command({ ping: 1 });
-    res.send('Database connected successfully: ' + JSON.stringify(pingResult));
-  } catch (error) {
-    console.error('Failed to connect to the database:', error);
-    res.status(500).send('Failed to connect to the database');
-  } finally {
-    await mongodbClient.close();
-  }
-});
+const app = express();
+app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+app.post('/register', (req, res) => {
+    const userData = req.body; // получаем данные пользователя из тела запроса
+    console.log(userData); // выводим данные в консоль для проверки
+
+    // Здесь добавьте логику для сохранения данных в базу данных
+    // Например, код для сохранения данных в MongoDB
+
+    res.status(201).send({ success: true, message: 'User registered', data: userData });
+});
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const UserSchema = new mongoose.Schema({
+    name: String,
+    phone: String
+});
+
+const User = mongoose.model('User', UserSchema);
+app.post('/register', async (req, res) => {
+    try {
+        const newUser = new User(req.body);
+        const savedUser = await newUser.save();
+        res.status(201).send({ success: true, message: 'User registered', data: savedUser });
+    } catch (error) {
+        res.status(500).send({ success: false, message: error.message });
+    }
 });
