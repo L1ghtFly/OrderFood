@@ -1,44 +1,47 @@
-let tg = window.Telegram.WebApp;
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-    // Validate form data (add your validations)
-    if (document.getElementById("email").value  && document.getElementById("name").value) {
-        // Redirect on successful form submission
-        window.location.href = "menu.html";
-    } else {
-        alert("Пожалуйста, заполните все поля!");
-    }
-});
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const registrationForm = document.getElementById('registrationForm');
 
-    registrationForm.addEventListener('submit', function(event) {
+    registrationForm.addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const name = document.getElementById('name').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const termsChecked = document.querySelector('.custom-checkbox').checked;
 
-        if (name && phone && termsChecked && phone.startsWith('+375')) {
+        if (name && phone && termsChecked && phone.startsWith('+375') && email) {
             let data = {
                 name: name,
-                phone: phone
+                phone: phone,
             };
 
-            let jsonData = JSON.stringify(data);
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
 
-            if (window.Telegram && window.Telegram.WebApp) {
-                console.log("Sending data:", jsonData); // Логируем данные перед отправкой
-                window.Telegram.WebApp.sendData(jsonData);
-                window.location.href = "menu.html";
-            } else {
-                alert("Ошибка доступа к Telegram WebApp API.");
+                const responseData = await response.json();
+
+                if (response.ok) {
+                    console.log("Регистрация прошла успешно:", responseData);
+                    window.location.href = "menu.html"; // Перенаправление пользователя после успешной регистрации.
+                } else {
+                    throw new Error(responseData.message || "Ошибка регистрации");
+                }
+            } catch (error) {
+                console.error("Ошибка при отправке данных:", error.message);
+                alert("Ошибка при регистрации: " + error.message);
             }
         } else {
             alert("Пожалуйста, заполните все поля и примите условия!");
         }
     });
+
 
     document.querySelectorAll(".registration-form .write").forEach(input => {
         input.addEventListener('input', () => manageLabel(input));
