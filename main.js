@@ -2,7 +2,7 @@ let tg = window.Telegram.WebApp;
 document.getElementById("registrationForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent default form submission
     // Validate form data (add your validations)
-    if (document.getElementById("email").value && document.getElementById("password").value && document.getElementById("name").value) {
+    if (document.getElementById("email").value  && document.getElementById("name").value) {
         // Redirect on successful form submission
         window.location.href = "menu.html";
     } else {
