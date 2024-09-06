@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3000;
 
 // Импорт клиента MongoDB
-const client = require('./database');
+const client = require('database');
 
 app.get('/', async (req, res) => {
   try {
