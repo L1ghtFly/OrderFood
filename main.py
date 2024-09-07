@@ -4,6 +4,7 @@ from aiogram.filters import Command
 from pymongo import MongoClient
 import asyncio
 import json
+import os
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client['food_ordering_bot']
@@ -26,25 +27,30 @@ async def send_welcome(message: types.Message):
 @dp.message(lambda message: message.content_type == types.ContentType.WEB_APP_DATA)
 async def handle_web_app_data(message: types.Message):
     try:
-        print("Received data:", message.web_app_data.data)  # Логирование входящих данных
-        data = json.loads(message.web_app_data.data)  # Попытка декодировать JSON
-        print("Parsed data:", data)  # Вывод распарсенных данных
-
-        update_result = users_collection.update_one(
-            {"telegram_id": message.from_user.id},
-            {"$set": {"name": data['name'], "phone": data['phone']}},
-            upsert=True
-        )
+        data = json.loads(message.web_app_data.data)
+        print("Parsed data:", data)
         
-        if update_result.upserted_id:
-            response_text = f"Данные сохранены: Имя - {data['name']}, Телефон - {data['phone']}"
+        # Проверка наличия необходимых ключей в данных
+        if 'name' in data and 'phone' in data:
+            update_result = users_collection.update_one(
+                {"telegram_id": message.from_user.id},
+                {"$set": {"name": data['name'], "phone": data['phone']}},
+                upsert=True
+            )
+            
+            if update_result.upserted_id:
+                response_text = f"Данные сохранены: Имя - {data['name']}, Телефон - {data['phone']}"
+            else:
+                response_text = f"Данные обновлены: Имя - {data['name']}, Телефон - {data['phone']}"
+            await message.answer(response_text)
         else:
-            response_text = f"Данные обновлены: Имя - {data['name']}, Телефон - {data['phone']}"
-
-        await message.answer(response_text)
+            await message.answer("Отправленные данные неполные.")
+    except json.JSONDecodeError:
+        await message.answer("Произошла ошибка при разборе данных.")
     except Exception as e:
-        print("Error processing data:", str(e))
+        print(f"Error processing data: {str(e)}")
         await message.answer("Произошла ошибка при обработке данных.")
+
 async def main():
     await dp.start_polling(bot)
 
